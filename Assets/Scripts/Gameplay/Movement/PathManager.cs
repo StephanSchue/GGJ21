@@ -51,6 +51,25 @@ public class PathManager : MonoBehaviour
         }
     }
 
+    #region Set Position
+
+    public void SetPositionOfPathMovementComponent(PathMovement pathMovement)
+    {
+        int yPos = Random.Range(0, 2) == 0 ? 
+            (Random.Range(0, 2) == 0 ? 0 : GridDimensions.y - 1) : Random.Range(0, GridDimensions.y);
+
+        int xPos = 0;
+
+        if(yPos == 0 || yPos == GridDimensions.y - 1)
+            xPos = Random.Range(1, GridDimensions.x-1);
+        else
+            xPos = Random.Range(0, 2) == 0 ? 0 : GridDimensions.x - 1;
+
+        pathMovement.SetPosition(pathGrid[xPos, yPos].center.position);
+    }
+
+    #endregion
+
     #region Find Position
 
     public bool FindPathToPosition(Vector3 start, Vector3 destination, out Vector3[] path, out float pathLength)

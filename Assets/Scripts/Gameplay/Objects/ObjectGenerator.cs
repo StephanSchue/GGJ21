@@ -8,7 +8,7 @@ namespace GGJ21.Gameplay.Objects
     public class ObjectGenerator : MonoBehaviour
     {
         private ObjectTileComponent[,] objectTiles;
-        public List<ObjectComponent> objectComponents = new List<ObjectComponent>();
+        private List<ObjectComponent> objectComponents = new List<ObjectComponent>();
 
         public Vector2Int goalCoordinate;
         public int[] goalObjectCombination;
@@ -19,7 +19,7 @@ namespace GGJ21.Gameplay.Objects
             
         }
 
-        public void Initialize(PathManager pathManager, ObjectProfile objectProfile)
+        public Vector2Int Initialize(PathManager pathManager, ObjectProfile objectProfile)
         {
             // --- Collect Tiles ---
             int xLength = pathManager.GridDimensions.x;
@@ -55,7 +55,19 @@ namespace GGJ21.Gameplay.Objects
                         SetObjectTileComponent(objectProfile, objectTiles[x, y]);
                 }
             }
+
+            return goalCoordinate;
         }
+
+        public void Deinitialize()
+        {
+            for(int i = 0; i < objectComponents.Count; i++)
+                Destroy(objectComponents[i].gameObject);
+
+            objectComponents.Clear();
+        }
+
+        #region Instantiate
 
         private void SetObjectTileComponent(ObjectProfile objectProfile, ObjectTileComponent objectTileComponent, params int[] uniqueIDs)
         {
@@ -104,7 +116,10 @@ namespace GGJ21.Gameplay.Objects
             for(int i = 0; i < anchorCount; i++)
             {
                 GameObject anchor = objectTileComponent.ObjectAnchors[i];
-                InstantiateObject(objectProfile, anchor.transform, randomIds[i]);
+                ObjectComponent instance = InstantiateObject(objectProfile, anchor.transform, randomIds[i]);
+                objectComponents.Add(instance);
+
+                objectTileComponent.AddObjectToAnchor(i, instance);
             }
 
             if(uniqueIDsSet)
@@ -135,5 +150,7 @@ namespace GGJ21.Gameplay.Objects
 
             return nums;
         }
+
+        #endregion
     }
 }

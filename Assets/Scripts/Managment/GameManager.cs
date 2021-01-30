@@ -487,7 +487,25 @@ namespace GGJ21.Game.Core
             Score = 0;
             //RemainingMoves = totalMoves = matchConditionsProfile.moves;
 
+            pathManager.SetPositionOfPathMovementComponent(character);
             inputManager.SetInputActive(true);
+        }
+
+        private void RestartGame()
+        {
+            matchResult = MatchResult.None;
+            pathManager.SetPositionOfPathMovementComponent(character);
+            inputManager.SetInputActive(true);
+
+            objectGenerator.Deinitialize();
+            objectGenerator.Initialize(pathManager, sceneSettings.objectProfile);
+
+            ShowGame();
+
+            Score = 0;
+            RemainingMoves = totalMoves;
+
+            ChangeGamePhase(GamePhase.View);
         }
 
         private void ShowGame()
@@ -504,7 +522,7 @@ namespace GGJ21.Game.Core
                 else if(gamePhase != GamePhase.Pause)
                     OnButtonPauseMenuClick();
             }
-            else if(Application.isEditor && Input.GetKeyDown(KeyCode.Return))
+            else if(Application.isEditor && Input.GetKeyDown(KeyCode.R))
             {
                 CallRestart();
             }
@@ -568,14 +586,7 @@ namespace GGJ21.Game.Core
 
         private void CallRestart()
         {
-            matchResult = MatchResult.None;
-            inputManager.SetInputActive(true);
-            ShowGame();
-
-            Score = 0;
-            RemainingMoves = totalMoves;
-            
-            ChangeGamePhase(GamePhase.View);
+            RestartGame();
         }
 
         #endregion

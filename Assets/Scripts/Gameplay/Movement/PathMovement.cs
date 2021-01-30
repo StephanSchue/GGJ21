@@ -37,6 +37,12 @@ public class PathMovement : MonoBehaviour
         pathManager = GameObject.FindGameObjectWithTag("PathManager")?.GetComponent<PathManager>();
     }
 
+    public void SetPosition(Vector3 position)
+    {
+        DOTween.Kill(transform);
+        transform.position = position;
+    }
+
     public void MoveTo(Vector3 destination)
     {
         if(pathManager.FindPathToPosition(transform.position, destination, out Vector3[] path, out float length))
