@@ -41,6 +41,15 @@ public class PathMovement : MonoBehaviour
     {
         DOTween.Kill(transform);
         transform.position = position;
+
+        animator.SetFloat(A_Velocity, 0f);
+
+        if(walkCursorUsed)
+        {
+            DOTween.Kill(walkCursor.transform);
+            walkCursor.transform.position = transform.position;
+            walkCursorRenderer.enabled = false;
+        }
     }
 
     public void MoveTo(Vector3 destination)

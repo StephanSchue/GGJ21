@@ -485,16 +485,16 @@ namespace GGJ21.Game.Core
             ShowGame();
 
             Score = 0;
-            //RemainingMoves = totalMoves = matchConditionsProfile.moves;
 
-            pathManager.SetPositionOfPathMovementComponent(character);
+            SetPlayerPosition();
             inputManager.SetInputActive(true);
         }
 
         private void RestartGame()
         {
             matchResult = MatchResult.None;
-            pathManager.SetPositionOfPathMovementComponent(character);
+
+            SetPlayerPosition();
             inputManager.SetInputActive(true);
 
             objectGenerator.Deinitialize();
@@ -506,6 +506,19 @@ namespace GGJ21.Game.Core
             RemainingMoves = totalMoves;
 
             ChangeGamePhase(GamePhase.View);
+        }
+
+        private void SetPlayerPosition()
+        {
+            cameraManager.SetCameraEnabled(false);
+            pathManager.SetPositionOfPathMovementComponent(character);
+            StartCoroutine(ResetCamera());
+        }
+
+        private IEnumerator ResetCamera()
+        {
+            yield return null;
+            cameraManager.SetCameraEnabled(true);
         }
 
         private void ShowGame()
