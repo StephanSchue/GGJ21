@@ -158,12 +158,12 @@ namespace GGJ21.Gameplay.Objects
         private int[] GetArrayOfUniqueNumbers(int maxValue)
         {
             int[] nums = Enumerable.Range(0, maxValue).ToArray();
-            System.Random rnd = new System.Random();
+            //System.Random rnd = new System.Random();
 
             // Shuffle the array
             for(int i = 0; i < nums.Length; ++i)
             {
-                int randomIndex = rnd.Next(nums.Length);
+                int randomIndex = Random.Range(0, maxValue);
                 int temp = nums[randomIndex];
                 nums[randomIndex] = nums[i];
                 nums[i] = temp;
