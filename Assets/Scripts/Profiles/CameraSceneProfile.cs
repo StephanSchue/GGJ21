@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MAG.General
+namespace GGJ21.General
 {
     [System.Serializable]
     public struct AspectRatioElement

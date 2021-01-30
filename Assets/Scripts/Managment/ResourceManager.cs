@@ -7,7 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
-namespace MAG.General
+namespace GGJ21.General
 {
     public class ResourceManager : MonoBehaviour
     {

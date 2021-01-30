@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.Events;
 using TMPro;
-using static MAG.General.EventDefinitions;
+using static GGJ21.General.EventDefinitions;
 
-namespace MAG.General
+namespace GGJ21.General
 {
     public class UIManager : MonoBehaviour
     {

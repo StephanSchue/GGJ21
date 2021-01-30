@@ -1,11 +1,12 @@
-﻿using MAG.General;
+﻿using GGJ21.Gameplay.Objects;
+using GGJ21.General;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace MAG.Game.Core
+namespace GGJ21.Game.Core
 {
     /// <summary>
     /// GameManager - 
@@ -56,7 +57,9 @@ namespace MAG.Game.Core
         private CameraManager cameraManager;
         private SceneSettings sceneSettings;
 
+        private PathManager pathManager;
         private PathMovement character;
+        private ObjectGenerator objectGenerator;
 
         // States
         private ApplicationState applicationState;
@@ -401,6 +404,8 @@ namespace MAG.Game.Core
 
             cameraManager = Camera.main.GetComponent<CameraManager>();
 
+            objectGenerator = GetComponent<ObjectGenerator>();
+
             // --- Move to MainMenu ---
             if(ingameRepresentation)
                 ChangeApplicationState(ApplicationState.Game);
@@ -460,13 +465,15 @@ namespace MAG.Game.Core
                 inputManager.InitializeBoardInput(sceneSettings.boardOrigin);
                 cameraManager.Initialize(this.character.transform);
 
+                pathManager = GameObject.FindGameObjectWithTag("PathManager")?.GetComponent<PathManager>();
+                objectGenerator = GetComponent<ObjectGenerator>();
+                objectGenerator.Initialize(pathManager, sceneSettings.objectProfile);
+
                 //matchConditionsProfile = sceneSettings.boardProfile.matchConditions;
                 //winCondition = new MatchWinCondition(this.matchConditionsProfile.winCondtion);
 
                 if(!boardManagerListenerSet)
-                {
                     boardManagerListenerSet = true;
-                }
                 
                 StartGame();
             }

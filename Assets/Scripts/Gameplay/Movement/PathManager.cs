@@ -9,11 +9,17 @@ public class PathManager : MonoBehaviour
     public bool debug;
     private PathComponent[,] pathGrid;
 
+    public PathComponent[,] PathGrid => pathGrid;
+    public Vector2Int GridDimensions { get; private set; }
+
     private void Awake()
     {
         int rowCount = rows.Length;
-        int columnCount = rows[0].transform.childCount; 
+        int columnCount = rows[0].transform.childCount;
+        GridDimensions = new Vector2Int(rowCount, columnCount);
+
         pathGrid = new PathComponent[columnCount, rowCount];
+
         //Debug.Log($"pathGrid: {rowCount}x{columnCount}");
 
         for(int y = 0; y < rowCount; y++)
@@ -44,6 +50,8 @@ public class PathManager : MonoBehaviour
             }
         }
     }
+
+    #region Find Position
 
     public bool FindPathToPosition(Vector3 start, Vector3 destination, out Vector3[] path, out float pathLength)
     {
@@ -129,4 +137,6 @@ public class PathManager : MonoBehaviour
 
         return (coordinates, pathComponent, pathLink, pathIndex);
     }
+
+    #endregion
 }

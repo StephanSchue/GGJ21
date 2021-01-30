@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MAG.Game
+namespace GGJ21.Game
 {
     [System.Serializable]
     public enum WinCondition

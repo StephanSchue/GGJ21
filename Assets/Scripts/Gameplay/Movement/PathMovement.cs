@@ -7,11 +7,18 @@ public class PathMovement : MonoBehaviour
 {
     public Vector3 characterLookOrign = Vector2.right;
     public float mps = 1f;
+    public Transform walkCursor;
+    public SpriteRenderer walkCursorRenderer;
 
     private Animator animator;
     private PathManager pathManager;
 
     private readonly static string A_Velocity = "Velocity";
+
+    private void Awake()
+    {
+        walkCursorRenderer.enabled = false;
+    }
 
     private void Start()
     {
@@ -37,6 +44,9 @@ public class PathMovement : MonoBehaviour
                 transform.eulerAngles = new Vector3(0f, 180f);
             else
                 transform.eulerAngles = new Vector3(0f, 0f);
+
+            walkCursorRenderer.enabled = true;
+            walkCursor.transform.DOPath(path, mps * 5f, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased();
         }
     }
 
@@ -44,5 +54,6 @@ public class PathMovement : MonoBehaviour
     {
         Debug.Log("MoveComplete");
         animator.SetFloat(A_Velocity, 0f);
+        walkCursorRenderer.enabled = false;
     }
 }

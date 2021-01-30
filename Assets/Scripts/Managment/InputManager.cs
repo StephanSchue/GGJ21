@@ -1,10 +1,10 @@
-﻿using MAG.Game;
+﻿using GGJ21.Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MAG.General
+namespace GGJ21.General
 {
     [System.Serializable] public class Vector3Event : UnityEvent<Vector3> { }
     public class InputManager : MonoBehaviour

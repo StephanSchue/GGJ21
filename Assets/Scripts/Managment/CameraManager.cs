@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-namespace MAG.General
+namespace GGJ21.General
 {
     public class CameraManager : MonoBehaviour
     {
