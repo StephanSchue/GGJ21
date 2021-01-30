@@ -8,10 +8,12 @@ public class PathMovement : MonoBehaviour
     public Vector3 characterLookOrign = Vector2.right;
     public float mps = 1f;
 
+    private Animator animator;
     private PathManager pathManager;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         pathManager = GameObject.FindGameObjectWithTag("PathManager")?.GetComponent<PathManager>();
     }
 
@@ -19,7 +21,20 @@ public class PathMovement : MonoBehaviour
     {
         if(pathManager.FindPathToPosition(transform.position, destination, out Vector3[] path, out float length))
         {
-            transform.DOPath(path, mps, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased(); // .SetLookAt(1f, characterLookOrign, Vector3.up)
+            transform.DOPath(path, mps, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased().OnComplete(MoveComplete); // .SetLookAt(1f, characterLookOrign, Vector3.up)
+            animator.SetFloat("Velocity", 1f);
+
+            Vector3 heading = path[path.Length - 1] - path[0];
+
+            if(heading.x > 0f)
+                transform.eulerAngles = new Vector3(0f, 180f);
+            else
+                transform.eulerAngles = new Vector3(0f, 0f);
         }
+    }
+
+    private void MoveComplete()
+    {
+        animator.SetFloat("Velocity", 0f);
     }
 }
