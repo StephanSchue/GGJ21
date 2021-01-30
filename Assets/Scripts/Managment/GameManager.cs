@@ -24,11 +24,8 @@ namespace GGJ21.Game.Core
 
         public enum GamePhase
         {
-            View,
-            Select,
-            Shift,
-            Match,
-            Refill,
+            Map,
+            Words,
             Pause,
             Restart,
             GameOver
@@ -220,15 +217,9 @@ namespace GGJ21.Game.Core
 
             switch(oldPhase)
             {
-                case GamePhase.View:
+                case GamePhase.Map:
                     break;
-                case GamePhase.Select:
-                    break;
-                case GamePhase.Shift:
-                    break;
-                case GamePhase.Match:
-                    break;
-                case GamePhase.Refill:
+                case GamePhase.Words:
                     break;
                 case GamePhase.Pause:
                     CallUnpause();
@@ -247,17 +238,9 @@ namespace GGJ21.Game.Core
 
             switch(newPhase)
             {
-                case GamePhase.View:
+                case GamePhase.Map:
                     break;
-                case GamePhase.Select:
-                    break;
-                case GamePhase.Shift:
-                    ShowGame();
-                    break;
-                case GamePhase.Match:
-                    break;
-                case GamePhase.Refill:
-                    ShowGame();
+                case GamePhase.Words:
                     break;
                 case GamePhase.Pause:
                     CallPause();
@@ -382,6 +365,8 @@ namespace GGJ21.Game.Core
             uiManager.RegisterButtonActionsOnPanel(new UIManager.UIPanelButtonsRegistation("Game",
                 new UIManager.UIButtonRegistationAction[]
                 {
+                    new UIManager.UIButtonRegistationAction("Map", OnButtonMapClick),
+                    new UIManager.UIButtonRegistationAction("Words", OnButtonWordsClick),
                     new UIManager.UIButtonRegistationAction("Menu", OnButtonPauseMenuClick),
                 }));
 
@@ -519,7 +504,7 @@ namespace GGJ21.Game.Core
             Score = 0;
             RemainingMoves = totalMoves;
 
-            ChangeGamePhase(GamePhase.View);
+            ChangeGamePhase(GamePhase.Map);
         }
 
         private void SetPlayerPosition()
@@ -567,6 +552,17 @@ namespace GGJ21.Game.Core
         }
 
         // --- Button Actions ---
+
+        private void OnButtonMapClick()
+        {
+
+        }
+
+        private void OnButtonWordsClick()
+        {
+
+        }
+
         private void OnButtonPauseMenuClick()
         {
             if(gamePhase != GamePhase.Pause)
