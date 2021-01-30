@@ -16,7 +16,7 @@ public class PathManager : MonoBehaviour
     {
         int rowCount = rows.Length;
         int columnCount = rows[0].transform.childCount;
-        GridDimensions = new Vector2Int(rowCount, columnCount);
+        GridDimensions = new Vector2Int(columnCount, rowCount);
 
         pathGrid = new PathComponent[columnCount, rowCount];
 

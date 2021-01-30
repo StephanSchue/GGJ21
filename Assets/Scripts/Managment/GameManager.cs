@@ -680,7 +680,7 @@ namespace GGJ21.Game.Core
             if(debug)
                 Score = winCondition.puzzleCount;
 
-            if(markedTile == goalTile && CheckMatchConditions(out MatchResult matchResult))
+            if(markedTile == goalTile && CheckMatchConditions(out MatchResult matchResult) && matchResult == MatchResult.Win)
                 PlayFinishAnimation(matchResult);
             else if(foundMarkedObject)
                 InteractWithObject();
