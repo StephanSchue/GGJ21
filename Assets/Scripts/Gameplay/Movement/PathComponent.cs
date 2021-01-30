@@ -8,17 +8,25 @@ public struct PathLink
     public string label;
     public bool enabled;
     public Transform[] path;
+    public Vector3[] pathPositions;
+    public PathComponent pathComponent;
 
     private float length;
 
     public float Length => length;
 
-    public void CalculateLength()
+    public void CalculatePath()
     {
         length = 0f;
+        pathPositions = new Vector3[path.Length];
 
-        for(int i = 1; i < path.Length; i++)
-            length += Vector3.Distance(path[i - 1].position, path[i].position);
+        for(int i = 0; i < path.Length; i++)
+        {
+            pathPositions[i] = path[i].position;
+
+            if(i > 0)
+                length += Vector3.Distance(pathPositions[i-1], pathPositions[i]);
+        }
     }
 }
 
@@ -27,10 +35,17 @@ public class PathComponent : MonoBehaviour
     public Transform center;
     public PathLink[] pathLinks;
 
-    private void Awake()
+    public List<PathLink> availablePathLinks = new List<PathLink>();
+
+    public void Initialize()
     {
         for(int i = 0; i < pathLinks.Length; i++)
-            pathLinks[i].CalculateLength();
+        {
+            pathLinks[i].CalculatePath();
+
+            if(pathLinks[i].enabled)
+                availablePathLinks.Add(pathLinks[i]);
+        }
     }
     
     public (PathLink, int) GetPathIndexByDistance(Vector2 position)
@@ -73,7 +88,7 @@ public class PathComponent : MonoBehaviour
             for(int x = 1; x < pathLink.path.Length; x++)
             {
                 Gizmos.DrawLine(pathLink.path[x-1].position, pathLink.path[x].position);
-                Gizmos.DrawSphere(pathLink.path[x-1].position, 0.25f); 
+                //Gizmos.DrawSphere(pathLink.path[x-1].position, 0.25f); 
                 Gizmos.DrawSphere(pathLink.path[x].position, 0.25f);
             }
         }
