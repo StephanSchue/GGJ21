@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7ab0a324732827b4580374e66e2499b2
+guid: a2624102300127445b5d26e1e24a0a84
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -100,7 +100,7 @@ ScriptedImporter:
       y: 524
       width: 181
       height: 150
-    spriteID: 847305fe183df26448f50d57ea5b3760
+    spriteID: a5d81a847200199498082ab469d92878
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -122,7 +122,7 @@ ScriptedImporter:
       y: 682
       width: 150
       height: 181
-    spriteID: 5608c327d71d4e84aa09543bb1d2d8f5
+    spriteID: 3402e00a61cd70a43ac2fdea5aed981e
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -144,7 +144,7 @@ ScriptedImporter:
       y: 524
       width: 181
       height: 150
-    spriteID: 355a238f9a3719847884c625b36ec5a8
+    spriteID: 991fcd8d65221414e836576a56cb5343
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -166,7 +166,7 @@ ScriptedImporter:
       y: 682
       width: 150
       height: 150
-    spriteID: 63ff8efc80be50e44bfaf68b6ed40ff7
+    spriteID: dba270c78bf602e40b0cd30ff82a85a0
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -188,7 +188,7 @@ ScriptedImporter:
       y: 4
       width: 512
       height: 512
-    spriteID: e6184b112460ff94dad009923afd9319
+    spriteID: 310b15ea307ecbc4da1446c98022a473
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -199,24 +199,13 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
-  platformSettings:
-  - name: Default
-    overridden: 1
-    maxTextureSize: 512
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 512
-  importedTextureHeight: 512
+  importedTextureWidth: 1024
+  importedTextureHeight: 1024
   documentSize: {x: 512, y: 512}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
@@ -233,35 +222,35 @@ ScriptedImporter:
     spriteName: Way | right | classic
     isGroup: 0
     parentIndex: -1
-    spriteID: 847305fe183df26448f50d57ea5b3760
+    spriteID: a5d81a847200199498082ab469d92878
     layerID: 9
     mosaicPosition: {x: 4, y: 524}
   - name: Way | down | classic
     spriteName: Way | down | classic
     isGroup: 0
     parentIndex: -1
-    spriteID: 5608c327d71d4e84aa09543bb1d2d8f5
+    spriteID: 3402e00a61cd70a43ac2fdea5aed981e
     layerID: 8
     mosaicPosition: {x: 4, y: 682}
   - name: Way | left | classic
     spriteName: Way | left | classic
     isGroup: 0
     parentIndex: -1
-    spriteID: 355a238f9a3719847884c625b36ec5a8
+    spriteID: 991fcd8d65221414e836576a56cb5343
     layerID: 7
     mosaicPosition: {x: 193, y: 524}
   - name: Way - Center
     spriteName: Way - Center
     isGroup: 0
     parentIndex: -1
-    spriteID: 63ff8efc80be50e44bfaf68b6ed40ff7
+    spriteID: dba270c78bf602e40b0cd30ff82a85a0
     layerID: 3
     mosaicPosition: {x: 162, y: 682}
   - name: Grass
     spriteName: Grass
     isGroup: 0
     parentIndex: -1
-    spriteID: e6184b112460ff94dad009923afd9319
+    spriteID: 310b15ea307ecbc4da1446c98022a473
     layerID: 5
     mosaicPosition: {x: 4, y: 4}
   characterData:

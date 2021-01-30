@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 47ff51366cc31cf4789619eb6bda702a
+guid: 6feb9c0c02d361f4082c45d08fa1c5a9
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -100,7 +100,7 @@ ScriptedImporter:
       y: 524
       width: 181
       height: 150
-    spriteID: 5d902c47d1093a04881356b53c58dd23
+    spriteID: 1db21336d8346c84aa4d289184282e6c
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -122,7 +122,7 @@ ScriptedImporter:
       y: 682
       width: 150
       height: 181
-    spriteID: 9dbf77bef0fc0e14294707eb71a04e57
+    spriteID: 5f00ef6da34570449a2bcd9caf6637e7
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -144,7 +144,7 @@ ScriptedImporter:
       y: 524
       width: 181
       height: 150
-    spriteID: f650589bc6618324f87b3b6497d6ceba
+    spriteID: f22450f58edb3144eb8c59b1a84e22ca
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -166,7 +166,7 @@ ScriptedImporter:
       y: 682
       width: 150
       height: 181
-    spriteID: 4100afd6332708f49b009032a3aeb1c0
+    spriteID: daf931c1bfbfc104597603afe94c12a0
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -188,7 +188,7 @@ ScriptedImporter:
       y: 682
       width: 150
       height: 150
-    spriteID: 6094265f4a363a34ca34bbdf85a0e735
+    spriteID: a0b9166be9e4a204589e6c5727987b5d
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -210,7 +210,7 @@ ScriptedImporter:
       y: 4
       width: 512
       height: 512
-    spriteID: 3753f885c4e5cdf45b4379a314972f70
+    spriteID: 7cc920c3659510f4380aea16c6763dd0
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -221,24 +221,13 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
-  platformSettings:
-  - name: Default
-    overridden: 1
-    maxTextureSize: 512
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 512
-  importedTextureHeight: 512
+  importedTextureWidth: 1024
+  importedTextureHeight: 1024
   documentSize: {x: 512, y: 512}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
@@ -255,42 +244,42 @@ ScriptedImporter:
     spriteName: Way | right | classic
     isGroup: 0
     parentIndex: -1
-    spriteID: 5d902c47d1093a04881356b53c58dd23
+    spriteID: 1db21336d8346c84aa4d289184282e6c
     layerID: 9
     mosaicPosition: {x: 4, y: 524}
   - name: Way | down | classic
     spriteName: Way | down | classic
     isGroup: 0
     parentIndex: -1
-    spriteID: 9dbf77bef0fc0e14294707eb71a04e57
+    spriteID: 5f00ef6da34570449a2bcd9caf6637e7
     layerID: 8
     mosaicPosition: {x: 4, y: 682}
   - name: Way | left | classic
     spriteName: Way | left | classic
     isGroup: 0
     parentIndex: -1
-    spriteID: f650589bc6618324f87b3b6497d6ceba
+    spriteID: f22450f58edb3144eb8c59b1a84e22ca
     layerID: 7
     mosaicPosition: {x: 193, y: 524}
   - name: Way | top | classic
     spriteName: Way | top | classic
     isGroup: 0
     parentIndex: -1
-    spriteID: 4100afd6332708f49b009032a3aeb1c0
+    spriteID: daf931c1bfbfc104597603afe94c12a0
     layerID: 6
     mosaicPosition: {x: 162, y: 682}
   - name: Way - Center
     spriteName: Way - Center
     isGroup: 0
     parentIndex: -1
-    spriteID: 6094265f4a363a34ca34bbdf85a0e735
+    spriteID: a0b9166be9e4a204589e6c5727987b5d
     layerID: 3
     mosaicPosition: {x: 320, y: 682}
   - name: Grass
     spriteName: Grass
     isGroup: 0
     parentIndex: -1
-    spriteID: 3753f885c4e5cdf45b4379a314972f70
+    spriteID: 7cc920c3659510f4380aea16c6763dd0
     layerID: 5
     mosaicPosition: {x: 4, y: 4}
   characterData:
