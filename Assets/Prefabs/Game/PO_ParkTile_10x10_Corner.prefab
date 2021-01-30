@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3695502917844285439
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 42499009285505314, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: pathLinks.Array.data[0].enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 42499009285505314, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: pathLinks.Array.data[3].enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431736418264, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8640322310359891051, guid: fe4140e24901f1d4e8aa09530ba9ce72,
+        type: 3}
+    - target: {fileID: 8429362431809239420, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_Name
+      value: PO_ParkTile_10x10_Corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429362431809239423, guid: 3b7fbd83a35d31c4496bc949719c8012,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3b7fbd83a35d31c4496bc949719c8012, type: 3}
