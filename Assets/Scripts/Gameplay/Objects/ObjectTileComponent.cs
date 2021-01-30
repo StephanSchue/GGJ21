@@ -57,5 +57,19 @@ namespace GGJ21.Gameplay.Objects
         }
 
         #endif
+
+        #region Words
+
+        public ObjectInfo[] GetObjectWords(int count)
+        {
+            ObjectInfo[] words = new ObjectInfo[count];
+
+            for(int i = 0; i < count; i++)
+                words[i] = objects[i].GetOneObjectInfo();
+
+            return words;
+        }
+
+        #endregion
     }
 }

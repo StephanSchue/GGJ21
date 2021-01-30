@@ -1,4 +1,5 @@
 ﻿using GGJ21.Gameplay.Objects;
+using GGJ21.Gameplay.Words;
 using GGJ21.General;
 using System;
 using System.Collections;
@@ -56,9 +57,12 @@ namespace GGJ21.Game.Core
 
         private PathManager pathManager;
         private ObjectGenerator objectGenerator;
+        private WordManager wordManager;
 
         private PathMovement characterMovement;
         private InteractObjectComponent characterInteractor;
+
+        private string language = "de";
 
         // States
         private ApplicationState applicationState;
@@ -79,7 +83,9 @@ namespace GGJ21.Game.Core
         private int _remainingMoves = 0;
         private int _score = 0;
 
+        private ObjectTileComponent[] puzzleTiles;
         private Vector2Int goalTile;
+
         private Vector2Int markedTile;
         private ObjectComponent markedObject;
         private bool foundMarkedObject;
@@ -239,8 +245,10 @@ namespace GGJ21.Game.Core
             switch(newPhase)
             {
                 case GamePhase.Map:
+                    CallMapPanel();
                     break;
                 case GamePhase.Words:
+                    CallWordPuzzle();
                     break;
                 case GamePhase.Pause:
                     CallPause();
@@ -273,49 +281,6 @@ namespace GGJ21.Game.Core
 
             matchResult = MatchResult.None;
             return false;
-        }
-
-        private void OnSelectTile()
-        {
-            
-        }
-
-        private void OnDeselectTile()
-        {
-            
-        }
-
-        private void OnSwapTile()
-        {
-            //Debug.Log("OnSwapTile");
-            --RemainingMoves;
-        }
-
-        private void OnMatchTile(int tileCount)
-        {
-            int diff = (tileCount - 3);
-
-            if(tileCount > 3)
-                Score += (100 * tileCount) + (diff * (diff+1) * 100);
-            else
-                Score += 100 * tileCount;
-        }
-
-        private void OnNoMatchTile()
-        {
-            if(CheckMatchConditions(out MatchResult matchResult))
-            {
-                if(matchResult == MatchResult.Loose)
-                    CheckMatchConditions(out matchResult);
-
-                this.matchResult = matchResult;
-                ChangeGamePhase(GamePhase.GameOver);
-            }
-        }
-
-        private void OnRefill()
-        {
-            //Debug.Log("OnRefill");
         }
 
         private void StartGameOver()
@@ -370,6 +335,14 @@ namespace GGJ21.Game.Core
                     new UIManager.UIButtonRegistationAction("Menu", OnButtonPauseMenuClick),
                 }));
 
+            uiManager.RegisterButtonActionsOnPanel(new UIManager.UIPanelButtonsRegistation("WordPuzzle",
+                new UIManager.UIButtonRegistationAction[]
+                {
+                    new UIManager.UIButtonRegistationAction("Map", OnButtonMapClick),
+                    new UIManager.UIButtonRegistationAction("Words", OnButtonWordsClick),
+                    new UIManager.UIButtonRegistationAction("Menu", OnButtonPauseMenuClick),
+                }));
+
             uiManager.RegisterButtonActionsOnPanel(new UIManager.UIPanelButtonsRegistation("Pause",
                 new UIManager.UIButtonRegistationAction[]
                 {
@@ -403,6 +376,7 @@ namespace GGJ21.Game.Core
             cameraManager = Camera.main.GetComponent<CameraManager>();
 
             objectGenerator = GetComponent<ObjectGenerator>();
+            wordManager = GetComponent<WordManager>();
 
             // --- Move to MainMenu ---
             if(ingameRepresentation)
@@ -464,12 +438,17 @@ namespace GGJ21.Game.Core
                 inputManager.InitializeBoardInput(sceneSettings.boardOrigin);
                 cameraManager.Initialize(this.characterMovement.transform);
 
-                pathManager = GameObject.FindGameObjectWithTag("PathManager")?.GetComponent<PathManager>();
-                objectGenerator = GetComponent<ObjectGenerator>();
-                goalTile = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile);
-
                 matchConditionsProfile = sceneSettings.matchConditions;
                 winCondition = new MatchWinCondition(this.matchConditionsProfile.winCondtion);
+
+                pathManager = GameObject.FindGameObjectWithTag("PathManager")?.GetComponent<PathManager>();
+                objectGenerator = GetComponent<ObjectGenerator>();
+
+                int winConditionValue = matchConditionsProfile.winCondtion.puzzleCount;
+                int wordCount = matchConditionsProfile.winCondtion.wordCount;
+
+                (goalTile, puzzleTiles) = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile, winConditionValue);
+                wordManager.CreateWordPuzzles(puzzleTiles, wordCount, language);
 
                 if(!boardManagerListenerSet)
                     boardManagerListenerSet = true;
@@ -496,8 +475,13 @@ namespace GGJ21.Game.Core
             SetPlayerPosition();
             inputManager.SetInputActive(true);
 
+            int winConditionValue = matchConditionsProfile.winCondtion.puzzleCount;
+            int wordCount = matchConditionsProfile.winCondtion.wordCount;
+
             objectGenerator.Deinitialize();
-            goalTile = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile);
+            (goalTile,puzzleTiles) = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile, winConditionValue);
+           
+            wordManager.CreateWordPuzzles(puzzleTiles, wordCount, language);
 
             ShowGame();
 
@@ -551,16 +535,30 @@ namespace GGJ21.Game.Core
             
         }
 
+        // --- Words ---
+
+        private void CallMapPanel()
+        {
+            inputManager.SetInputActive(true);
+            uiManager.ChangeUIPanel("Game");
+        }
+
+        private void CallWordPuzzle()
+        {
+            inputManager.SetInputActive(false);
+            uiManager.ChangeUIPanel("WordPuzzle");
+        }
+
         // --- Button Actions ---
 
         private void OnButtonMapClick()
         {
-
+            ChangeGamePhase(GamePhase.Map);
         }
 
         private void OnButtonWordsClick()
         {
-
+            ChangeGamePhase(GamePhase.Words);
         }
 
         private void OnButtonPauseMenuClick()
@@ -622,10 +620,10 @@ namespace GGJ21.Game.Core
         {
             if(winCondition.condition == WinCondition.TreasureHunt && matchResult != MatchResult.Win)
             {
-                if(_score >= winCondition.value)
-                    uiManager.RaiseTextOutput("Score", string.Format("<color=#0BC74D>{0}/{1}</color>", _score, winCondition.value));
+                if(_score >= winCondition.puzzleCount)
+                    uiManager.RaiseTextOutput("Score", string.Format("<color=#0BC74D>{0}/{1}</color>", _score, winCondition.puzzleCount));
                 else
-                    uiManager.RaiseTextOutput("Score", string.Format("{0}/{1}", _score, winCondition.value));
+                    uiManager.RaiseTextOutput("Score", string.Format("{0}/{1}", _score, winCondition.puzzleCount));
             } 
             else
             {

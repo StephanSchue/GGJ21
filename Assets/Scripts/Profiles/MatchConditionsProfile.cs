@@ -15,12 +15,14 @@ namespace GGJ21.Game
     public struct MatchWinCondition
     {
         public WinCondition condition;
-        public int value;
+        public int puzzleCount;
+        public int wordCount;
 
         public MatchWinCondition(MatchWinCondition otherCondition)
         {
             this.condition = otherCondition.condition;
-            this.value = otherCondition.value;
+            this.puzzleCount = otherCondition.puzzleCount;
+            this.wordCount = otherCondition.wordCount;
         }
     }
 
@@ -34,7 +36,7 @@ namespace GGJ21.Game
             switch(winCondtion.condition)
             {
                 case WinCondition.TreasureHunt:
-                    return score == winCondtion.value;
+                    return score == winCondtion.puzzleCount;
             }
 
             return false;

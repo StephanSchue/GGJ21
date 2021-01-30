@@ -21,7 +21,7 @@ namespace GGJ21.Gameplay.Objects
             
         }
 
-        public Vector2Int Initialize(PathManager pathManager, ObjectProfile objectProfile)
+        public (Vector2Int, ObjectTileComponent[]) Initialize(PathManager pathManager, ObjectProfile objectProfile, int puzzleCount)
         {
             // --- Collect Tiles ---
             int xLength = pathManager.GridDimensions.x;
@@ -48,6 +48,19 @@ namespace GGJ21.Gameplay.Objects
             var rand = new System.Random();
             goalObjectCombination = GetArrayOfUniqueNumbers(objectCount);
 
+            // --- Puzzles ---
+            ObjectTileComponent[] puzzleObjectTiles = new ObjectTileComponent[puzzleCount];
+            int[] randomList = GetArrayOfUniqueNumbers(puzzleCount);
+
+            for(int i = 0; i < puzzleCount - 1; i++)
+            {
+                int xAreaPuz = Random.Range(1, pathManager.GridDimensions.x - 1);
+                int yAreaPuz = Random.Range(1, pathManager.GridDimensions.y - 1);
+                puzzleObjectTiles[i] = objectTiles[xAreaPuz, yAreaPuz];
+            }
+
+            puzzleObjectTiles[puzzleCount-1] = objectTiles[goalCoordinate.x, goalCoordinate.y];
+
             // --- Fill Tiles ---
             for(int y = 0; y < yLength; y++)
             {
@@ -67,7 +80,7 @@ namespace GGJ21.Gameplay.Objects
             objectTiles[goalCoordinate.x, goalCoordinate.y].MarkGoalObject(true);
             #endif
 
-            return goalCoordinate;
+            return (goalCoordinate, puzzleObjectTiles);
         }
 
         public void Deinitialize()
