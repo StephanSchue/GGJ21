@@ -45,6 +45,7 @@ namespace GGJ21.Game.Core
 
         // --- References ---
         public bool ingameRepresentation = false;
+        public bool debug = false;
         public ResourceManager resourceManager;
         public AssetReference[] gameScenes;
 
@@ -676,6 +677,9 @@ namespace GGJ21.Game.Core
 
         private void MoveToComplete()
         {
+            if(debug)
+                Score = winCondition.puzzleCount;
+
             if(markedTile == goalTile && CheckMatchConditions(out MatchResult matchResult))
                 PlayFinishAnimation(matchResult);
             else if(foundMarkedObject)
