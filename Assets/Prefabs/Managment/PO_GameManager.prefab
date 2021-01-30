@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8204912246798938564}
   - component: {fileID: 946455131090801860}
   - component: {fileID: 1973236856556533416}
+  - component: {fileID: 5563364948622371500}
   m_Layer: 0
   m_Name: PO_GameManager
   m_TagString: GameController
@@ -88,5 +89,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 454e9b2fead49344bbf3e1a4d408fca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalObjectCombination: 
+--- !u!114 &5563364948622371500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204912246798938570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3de204068d3d9478c2cec63ed24fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
