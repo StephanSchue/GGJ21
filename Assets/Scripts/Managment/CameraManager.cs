@@ -35,6 +35,7 @@ namespace GGJ21.General
             originPosition = origin.position;
             //AdjustToAspectRatio();
         }
+        #region Initialize
 
         public void Initialize(Transform transform)
         {
@@ -46,6 +47,10 @@ namespace GGJ21.General
             this.cameraSceneProfile = cameraSceneProfile;
             AdjustToAspectRatio();
         }
+
+        #endregion
+
+        #region Aspect Methods
 
         public void AdjustToAspectRatio()
         {
@@ -69,11 +74,22 @@ namespace GGJ21.General
                 }
             }
         }
-        
+
         public void ResetCameraAspect()
         {
             camera.ResetAspect();
         }
+
+        #endregion
+
+        #region Cinemachine Methods
+
+        public void SetCameraEnabled(bool enabled)
+        {
+            cinemachineCharacterFollow.enabled = enabled;
+        }
+
+        #endregion
 
         #region Property Methods
 
