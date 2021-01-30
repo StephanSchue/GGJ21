@@ -7,7 +7,7 @@ namespace GGJ21.Game
     [System.Serializable]
     public enum WinCondition
     {
-        Points,
+        TreasureHunt,
         Endless
     }
 
@@ -27,17 +27,14 @@ namespace GGJ21.Game
     [CreateAssetMenu(fileName = "MatchConditionsProfile_", menuName = "Configs/MatchConditionsProfile", order = 1)]
     public class MatchConditionsProfile : ScriptableObject
     {
-        public int moves = 30;
         public MatchWinCondition winCondtion;
 
         public bool ValidateWinCondition(int score, int remainingMoves)
         {
             switch(winCondtion.condition)
             {
-                case WinCondition.Points:
-                    return remainingMoves == 0 && score >= winCondtion.value;
-                case WinCondition.Endless:
-                    return false;
+                case WinCondition.TreasureHunt:
+                    return score == winCondtion.value;
             }
 
             return false;
@@ -47,7 +44,7 @@ namespace GGJ21.Game
         {
             switch(winCondtion.condition)
             {
-                case WinCondition.Points:
+                case WinCondition.TreasureHunt:
                     return (remainingMoves == 0);
             }
 

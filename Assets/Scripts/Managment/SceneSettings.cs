@@ -8,8 +8,12 @@ namespace GGJ21.General
 {
     public class SceneSettings : MonoBehaviour
     {
+        [Header("References")]
         public Transform boardOrigin;
         public PathMovement character;
+
+        [Header("Profiles")]
+        public MatchConditionsProfile matchConditions;
         public ObjectProfile objectProfile;
     }
 }

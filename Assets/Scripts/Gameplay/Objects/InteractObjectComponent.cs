@@ -10,7 +10,10 @@ namespace GGJ21.Gameplay.Objects
         public bool debug = false;
 
         private Animator animator;
+
         private UnityAction interactionCompleteCallback;
+        private UnityAction finishCompleteCallback;
+
 
         private void Start()
         {
@@ -28,10 +31,27 @@ namespace GGJ21.Gameplay.Objects
                 OnInteractComplete();
         }
 
-        public void OnInteractComplete()
+        private void OnInteractComplete()
         {
             if(interactionCompleteCallback != null)
                 interactionCompleteCallback.Invoke();
+        }
+
+        public void PlayFinish(UnityAction callback)
+        {
+            Debug.Log("Finish");
+            finishCompleteCallback = callback;
+
+            animator.SetTrigger("Finish");
+
+            if(debug)
+                OnFinishComplete();
+        }
+
+        private void OnFinishComplete()
+        {
+            if(finishCompleteCallback != null)
+                finishCompleteCallback.Invoke();
         }
     }
 }

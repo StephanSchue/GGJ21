@@ -72,7 +72,7 @@ public class PathManager : MonoBehaviour
 
     #region Find Position
 
-    public bool FindPathToPosition(Vector3 start, Vector3 destination, out Vector3[] path, out float pathLength)
+    public (bool,Vector2Int) FindPathToPosition(Vector3 start, Vector3 destination, out Vector3[] path, out float pathLength)
     {
         List<Vector3> pathList = new List<Vector3>();
         path = null;
@@ -83,7 +83,7 @@ public class PathManager : MonoBehaviour
 
         // --- Fallback when clicked on same tile ---
         if(startTile == endTile)
-            return false;
+            return (false, endTile);
 
         // --- Calculate Math ---
         Vector2Int tileHeading = endTile - startTile;
@@ -130,7 +130,7 @@ public class PathManager : MonoBehaviour
         }
         
         path = pathList.ToArray();
-        return true;
+        return (true, endTile);
     }
 
     private (Vector2Int, PathComponent, PathLink, int) GetPathPosition(Vector2 position)

@@ -55,9 +55,11 @@ public class PathMovement : MonoBehaviour
         }
     }
 
-    public bool MoveTo(Vector3 destination, UnityAction callback)
+    public (bool,Vector2Int) MoveTo(Vector3 destination, UnityAction callback)
     {
-        if(pathManager.FindPathToPosition(transform.position, destination, out Vector3[] path, out float length))
+        (bool status, Vector2Int tile) = pathManager.FindPathToPosition(transform.position, destination, out Vector3[] path, out float length);
+
+        if(status)
         {
             moveToCompleteCallback = callback;
 
@@ -80,11 +82,11 @@ public class PathMovement : MonoBehaviour
                 walkCursor.transform.DOPath(path, mps * 5f, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased();
             }
 
-            return true;
+            return (true, tile);
         }
         else
         {
-            return false;
+            return (false, tile);
         }
     }
 

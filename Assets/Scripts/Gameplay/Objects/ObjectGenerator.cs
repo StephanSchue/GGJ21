@@ -10,7 +10,9 @@ namespace GGJ21.Gameplay.Objects
         private ObjectTileComponent[,] objectTiles;
         private List<ObjectComponent> objectComponents = new List<ObjectComponent>();
 
-        public Vector2Int goalCoordinate;
+        private Vector2Int gridDimensions;
+        private Vector2Int goalCoordinate;
+
         public int[] goalObjectCombination;
         public const int goalUniqueValue = 3;
 
@@ -26,7 +28,8 @@ namespace GGJ21.Gameplay.Objects
             int yLength = pathManager.GridDimensions.y;
 
             objectTiles = new ObjectTileComponent[xLength, yLength];
-            
+            gridDimensions = new Vector2Int(xLength, yLength);
+
             for(int y = 0; y < yLength; y++)
             {
                 for(int x = 0; x < xLength; x++)
@@ -129,9 +132,6 @@ namespace GGJ21.Gameplay.Objects
 
                 objectTileComponent.AddObjectToAnchor(i, instance);
             }
-
-            if(uniqueIDsSet)
-                objectTileComponent.name = "GOAL";
         }
 
         private ObjectComponent InstantiateObject(ObjectProfile objectProfile, Transform anchor, int index)

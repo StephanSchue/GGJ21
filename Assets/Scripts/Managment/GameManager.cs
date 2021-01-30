@@ -82,6 +82,8 @@ namespace GGJ21.Game.Core
         private int _remainingMoves = 0;
         private int _score = 0;
 
+        private Vector2Int goalTile;
+        private Vector2Int markedTile;
         private ObjectComponent markedObject;
         private bool foundMarkedObject;
 
@@ -479,10 +481,10 @@ namespace GGJ21.Game.Core
 
                 pathManager = GameObject.FindGameObjectWithTag("PathManager")?.GetComponent<PathManager>();
                 objectGenerator = GetComponent<ObjectGenerator>();
-                objectGenerator.Initialize(pathManager, sceneSettings.objectProfile);
+                goalTile = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile);
 
-                //matchConditionsProfile = sceneSettings.boardProfile.matchConditions;
-                //winCondition = new MatchWinCondition(this.matchConditionsProfile.winCondtion);
+                matchConditionsProfile = sceneSettings.matchConditions;
+                winCondition = new MatchWinCondition(this.matchConditionsProfile.winCondtion);
 
                 if(!boardManagerListenerSet)
                     boardManagerListenerSet = true;
@@ -510,7 +512,7 @@ namespace GGJ21.Game.Core
             inputManager.SetInputActive(true);
 
             objectGenerator.Deinitialize();
-            objectGenerator.Initialize(pathManager, sceneSettings.objectProfile);
+            goalTile = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile);
 
             ShowGame();
 
@@ -585,7 +587,9 @@ namespace GGJ21.Game.Core
 
         private void OnButtonPauseMenuExitClick()
         {
-            if(!ingameRepresentation)
+            if(ingameRepresentation)
+                QuitGame();
+            else
                 ChangeApplicationState(ApplicationState.MainMenu);
         }
 
@@ -620,7 +624,7 @@ namespace GGJ21.Game.Core
 
         private void OutputScore()
         {
-            if(winCondition.condition == WinCondition.Points && matchResult != MatchResult.Win)
+            if(winCondition.condition == WinCondition.TreasureHunt && matchResult != MatchResult.Win)
             {
                 if(_score >= winCondition.value)
                     uiManager.RaiseTextOutput("Score", string.Format("<color=#0BC74D>{0}/{1}</color>", _score, winCondition.value));
@@ -668,13 +672,19 @@ namespace GGJ21.Game.Core
                 foundMarkedObject = true;
 
             // --- MoveTo Tile ---
-            if(!characterMovement.MoveTo(position, MoveToComplete) && foundMarkedObject)
+            (bool status, Vector2Int tile) = characterMovement.MoveTo(position, MoveToComplete);
+
+            markedTile = tile;
+
+            if(!status && foundMarkedObject)
                 InteractWithObject();
         }
 
         private void MoveToComplete()
         {
-            if(foundMarkedObject)
+            if(markedTile == goalTile && CheckMatchConditions(out MatchResult matchResult))
+                PlayFinishAnimation(matchResult);
+            else if(foundMarkedObject)
                 InteractWithObject();
         }
 
@@ -688,6 +698,19 @@ namespace GGJ21.Game.Core
         {
             markedObject = null;
             inputManager.SetInputActive(true);
+        }
+
+        private void PlayFinishAnimation(MatchResult matchResult)
+        {
+            this.matchResult = matchResult;
+            inputManager.SetInputActive(false);
+
+            characterInteractor.PlayFinish(PlayFinishAnimationComplete);
+        }
+
+        private void PlayFinishAnimationComplete()
+        {
+            ChangeGamePhase(GamePhase.GameOver);
         }
 
         #region Quit
