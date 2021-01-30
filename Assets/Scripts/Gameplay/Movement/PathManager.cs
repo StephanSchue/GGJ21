@@ -6,6 +6,7 @@ using System.Linq;
 public class PathManager : MonoBehaviour
 {
     public GameObject[] rows;
+    public bool debug;
     private PathComponent[,] pathGrid;
 
     private void Awake()
@@ -57,7 +58,7 @@ public class PathManager : MonoBehaviour
         Vector2Int tileHeadingAbsolute = new Vector2Int(Mathf.Abs(tileHeading.x), Mathf.Abs(tileHeading.y));
 
         foundPath = true;
-        pathList.Add(pathComponent1.center.position);
+        pathList.Add(originPath1.pathPositions[pathIndex1]);
 
         Vector2Int coordinates = startTile;
 
@@ -90,9 +91,13 @@ public class PathManager : MonoBehaviour
         }
 
         pathList.Add(pathComponent2.center.position);
-        
-        //Debug.DrawLine(originPath1.path[pathIndex1].position, originPath2.path[pathIndex2].position, Color.green, 10f);
 
+        if(debug)
+        {
+            for(int i = 1; i < pathList.Count; i++)
+                Debug.DrawLine(pathList[i - 1], pathList[i], Color.green, 5f);
+        }
+        
         path = pathList.ToArray();
         return foundPath;
     }

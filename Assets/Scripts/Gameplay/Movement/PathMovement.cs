@@ -23,7 +23,10 @@ public class PathMovement : MonoBehaviour
     {
         if(pathManager.FindPathToPosition(transform.position, destination, out Vector3[] path, out float length))
         {
+            Debug.Log("MoveTo");
+
             // Path
+            DOTween.Kill(transform);
             transform.DOPath(path, mps, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased().OnComplete(MoveComplete); // .SetLookAt(1f, characterLookOrign, Vector3.up)
             animator.SetFloat(A_Velocity, 1f);
 
@@ -39,6 +42,7 @@ public class PathMovement : MonoBehaviour
 
     private void MoveComplete()
     {
+        Debug.Log("MoveComplete");
         animator.SetFloat(A_Velocity, 0f);
     }
 }
