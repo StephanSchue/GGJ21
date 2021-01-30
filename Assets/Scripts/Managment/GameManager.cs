@@ -56,6 +56,8 @@ namespace MAG.Game.Core
         private CameraManager cameraManager;
         private SceneSettings sceneSettings;
 
+        private PathMovement character;
+
         // States
         private ApplicationState applicationState;
         private GamePhase gamePhase;
@@ -395,7 +397,7 @@ namespace MAG.Game.Core
             // --- Initialize BoardMananger & InputManager ---
             inputManager = GetComponent<InputManager>();
             inputManager.cameraReference = Camera.main;
-            //inputManager.OnMouseDown.AddListener(boardManager.ProccessInput);
+            inputManager.OnMouseDown.AddListener(OnTileClick);
 
             cameraManager = Camera.main.GetComponent<CameraManager>();
 
@@ -453,9 +455,10 @@ namespace MAG.Game.Core
             if(sceneSettingsObject != null && sceneSettingsObject.TryGetComponent(out SceneSettings sceneSettings))
             {
                 this.sceneSettings = sceneSettings;
-                
-                //inputManager.InitializeBoardInput(boardManager.boardOrigin);
-                //cameraManager.Initialize(sceneSettings.cameraSceneProfile);
+                this.character = sceneSettings.character;
+
+                inputManager.InitializeBoardInput(sceneSettings.boardOrigin);
+                cameraManager.Initialize(this.character.transform);
 
                 //matchConditionsProfile = sceneSettings.boardProfile.matchConditions;
                 //winCondition = new MatchWinCondition(this.matchConditionsProfile.winCondtion);
@@ -603,6 +606,12 @@ namespace MAG.Game.Core
         }
 
         #endregion
+
+        private void OnTileClick(Vector3 position)
+        {
+            Debug.DrawRay(position, Vector3.up, Color.white, 10f);
+            character.MoveTo(position);
+        }
 
         #region Quit
 

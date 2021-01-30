@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace MAG.General
 {
     public class CameraManager : MonoBehaviour
     {
+        [Header("References")]
         public Transform origin;
         public Camera camera;
 
+        [Header("Chinemachine Settings")]
+        public CinemachineBrain cinemachineBrain;
+        public CinemachineVirtualCamera cinemachineCharacterFollow;
+
+        [Header("Aspect Settings")]
         public CameraSceneProfile cameraSceneProfile;
 
         private Vector3 originPosition;
@@ -26,7 +33,12 @@ namespace MAG.General
                 return;
 
             originPosition = origin.position;
-            AdjustToAspectRatio();
+            //AdjustToAspectRatio();
+        }
+
+        public void Initialize(Transform transform)
+        {
+            cinemachineCharacterFollow.Follow = transform;
         }
 
         public void Initialize(CameraSceneProfile cameraSceneProfile)

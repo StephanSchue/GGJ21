@@ -7,6 +7,7 @@ namespace MAG.General
 {
     public class SceneSettings : MonoBehaviour
     {
-            
+        public Transform boardOrigin;
+        public PathMovement character;
     }
 }
