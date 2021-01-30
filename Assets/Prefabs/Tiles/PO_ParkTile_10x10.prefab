@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8066306028472961449}
+  - component: {fileID: 3161843076842463262}
   m_Layer: 8
   m_Name: Object03
-  m_TagString: Untagged
+  m_TagString: ObjectAnchor
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24,12 +25,55 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486927171105264470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: -2.95, z: 0}
+  m_LocalPosition: {x: -3, y: -2.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7327002400680133035}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3161843076842463262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486927171105264470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5bc045ab5d21847af5dc45ec7f5e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - label: TashCan
+    status: 0
+  - label: Bench
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
 --- !u!1 &953650456515580763
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,9 +83,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8764079457860909321}
+  - component: {fileID: 5133524865445517886}
   m_Layer: 8
   m_Name: Object04
-  m_TagString: Untagged
+  m_TagString: ObjectAnchor
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,12 +99,55 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953650456515580763}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5, y: -2.95, z: 0}
+  m_LocalPosition: {x: 3, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7327002400680133035}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5133524865445517886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953650456515580763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5bc045ab5d21847af5dc45ec7f5e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - label: TashCan
+    status: 0
+  - label: Bench
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
 --- !u!1 &2361565670187189785
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,9 +217,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4743881658844533428}
+  - component: {fileID: 3666120466088146827}
   m_Layer: 8
   m_Name: Object01
-  m_TagString: Untagged
+  m_TagString: ObjectAnchor
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,12 +233,55 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5126855705441446020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 2.95, z: 0}
+  m_LocalPosition: {x: -3, y: 2.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7327002400680133035}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3666120466088146827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126855705441446020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5bc045ab5d21847af5dc45ec7f5e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - label: TashCan
+    status: 0
+  - label: Bench
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
 --- !u!1 &5643354704975541676
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +422,7 @@ GameObject:
   - component: {fileID: 8429362431736418265}
   - component: {fileID: 8429362431736418264}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,10 +504,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8429362431809239423}
   - component: {fileID: 42499009285505314}
+  - component: {fileID: 4716604571474378768}
   - component: {fileID: 74643656657015495}
   m_Layer: 8
   m_Name: PO_ParkTile_10x10
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -440,6 +573,19 @@ MonoBehaviour:
     pathPositions: []
     pathComponent: {fileID: 0}
   availablePathLinks: []
+--- !u!114 &4716604571474378768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429362431809239420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e1e2055ace2874984d4d8a19c621b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectContainer: {fileID: 7327002400680133035}
 --- !u!61 &74643656657015495
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -505,9 +651,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7927743443817369902}
+  - component: {fileID: 5487559530652840091}
   m_Layer: 8
   m_Name: Object02
-  m_TagString: Untagged
+  m_TagString: ObjectAnchor
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,9 +667,52 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9131326801082432387}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 2.95, z: 0}
+  m_LocalPosition: {x: 3, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7327002400680133035}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5487559530652840091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131326801082432387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5bc045ab5d21847af5dc45ec7f5e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - label: TashCan
+    status: 0
+  - label: Bench
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
+  - label: 
+    status: 0
