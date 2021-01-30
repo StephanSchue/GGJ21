@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class PathMovement : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PathMovement : MonoBehaviour
     private Animator animator;
     private PathManager pathManager;
     private bool walkCursorUsed = false;
+
+    private UnityAction moveToCompleteCallback;
 
     private readonly static string A_Velocity = "Velocity";
 
@@ -52,10 +55,12 @@ public class PathMovement : MonoBehaviour
         }
     }
 
-    public void MoveTo(Vector3 destination)
+    public bool MoveTo(Vector3 destination, UnityAction callback)
     {
         if(pathManager.FindPathToPosition(transform.position, destination, out Vector3[] path, out float length))
         {
+            moveToCompleteCallback = callback;
+
             // Path
             DOTween.Kill(transform);
             transform.DOPath(path, mps, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased().OnComplete(MoveComplete); // .SetLookAt(1f, characterLookOrign, Vector3.up)
@@ -74,6 +79,12 @@ public class PathMovement : MonoBehaviour
                 walkCursorRenderer.enabled = true;
                 walkCursor.transform.DOPath(path, mps * 5f, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased();
             }
+
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -83,5 +94,8 @@ public class PathMovement : MonoBehaviour
 
         if(walkCursorUsed)
             walkCursorRenderer.enabled = false;
+
+        if(moveToCompleteCallback != null)
+            moveToCompleteCallback.Invoke();
     }
 }

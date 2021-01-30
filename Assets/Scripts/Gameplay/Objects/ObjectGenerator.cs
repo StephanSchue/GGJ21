@@ -45,16 +45,24 @@ namespace GGJ21.Gameplay.Objects
             var rand = new System.Random();
             goalObjectCombination = GetArrayOfUniqueNumbers(objectCount);
 
+            // --- Fill Tiles ---
             for(int y = 0; y < yLength; y++)
             {
                 for(int x = 0; x < xLength; x++)
                 {
+                    objectTiles[x, y].Initialize();
+
                     if(x == goalCoordinate.x && y == goalCoordinate.y) // Place Goal Tile
                         SetObjectTileComponent(objectProfile, objectTiles[x, y], goalObjectCombination);
                     else // Place Random Tile
                         SetObjectTileComponent(objectProfile, objectTiles[x, y]);
                 }
             }
+
+            // --- Mark Goal ---
+            #if UNITY_EDITOR
+            objectTiles[goalCoordinate.x, goalCoordinate.y].MarkGoalObject(true);
+            #endif
 
             return goalCoordinate;
         }

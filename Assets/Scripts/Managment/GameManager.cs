@@ -58,8 +58,10 @@ namespace GGJ21.Game.Core
         private SceneSettings sceneSettings;
 
         private PathManager pathManager;
-        private PathMovement character;
         private ObjectGenerator objectGenerator;
+
+        private PathMovement characterMovement;
+        private InteractObjectComponent characterInteractor;
 
         // States
         private ApplicationState applicationState;
@@ -79,6 +81,12 @@ namespace GGJ21.Game.Core
         private int totalMoves = 0;
         private int _remainingMoves = 0;
         private int _score = 0;
+
+        private ObjectComponent markedObject;
+        private bool foundMarkedObject;
+
+        private LayerMask groundMask;
+        private LayerMask objectMask;
 
         public int RemainingMoves
         {
@@ -106,6 +114,9 @@ namespace GGJ21.Game.Core
 
         private void Awake()
         {
+            groundMask = LayerMask.GetMask("Ground");
+            objectMask = LayerMask.GetMask("Interactable");
+
             // --- Clean Methods for GameScene Setup ----
 
             // GameController
@@ -460,10 +471,11 @@ namespace GGJ21.Game.Core
             if(sceneSettingsObject != null && sceneSettingsObject.TryGetComponent(out SceneSettings sceneSettings))
             {
                 this.sceneSettings = sceneSettings;
-                this.character = sceneSettings.character;
+                this.characterMovement = sceneSettings.character;
+                this.characterInteractor = sceneSettings.character.GetComponent<InteractObjectComponent>();
 
                 inputManager.InitializeBoardInput(sceneSettings.boardOrigin);
-                cameraManager.Initialize(this.character.transform);
+                cameraManager.Initialize(this.characterMovement.transform);
 
                 pathManager = GameObject.FindGameObjectWithTag("PathManager")?.GetComponent<PathManager>();
                 objectGenerator = GetComponent<ObjectGenerator>();
@@ -511,7 +523,7 @@ namespace GGJ21.Game.Core
         private void SetPlayerPosition()
         {
             cameraManager.SetCameraEnabled(false);
-            pathManager.SetPositionOfPathMovementComponent(character);
+            pathManager.SetPositionOfPathMovementComponent(characterMovement);
             StartCoroutine(ResetCamera());
         }
 
@@ -640,8 +652,42 @@ namespace GGJ21.Game.Core
 
         private void OnTileClick(Vector3 position)
         {
-            Debug.DrawRay(position, Vector3.up, Color.white, 10f);
-            character.MoveTo(position);
+            float length = 0f;
+            Ray ray = new Ray(position + new Vector3(0f, 0f, -5f), Vector3.forward);
+
+            #if UNITY_EDITOR
+            Debug.DrawRay(position, Vector3.up, Color.white, 10f); 
+            Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 10f);
+            #endif
+
+            // --- Select Object ---
+            foundMarkedObject = false;
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 10f, objectMask);
+
+            if(hit.collider != null && hit.transform.TryGetComponent(out markedObject))
+                foundMarkedObject = true;
+
+            // --- MoveTo Tile ---
+            if(!characterMovement.MoveTo(position, MoveToComplete) && foundMarkedObject)
+                InteractWithObject();
+        }
+
+        private void MoveToComplete()
+        {
+            if(foundMarkedObject)
+                InteractWithObject();
+        }
+
+        private void InteractWithObject()
+        {
+            inputManager.SetInputActive(false);
+            characterInteractor.Interact(markedObject, InteractWithObjectComplete);
+        }
+
+        private void InteractWithObjectComplete()
+        {
+            markedObject = null;
+            inputManager.SetInputActive(true);
         }
 
         #region Quit

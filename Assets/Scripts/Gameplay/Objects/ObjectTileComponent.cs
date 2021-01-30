@@ -8,6 +8,10 @@ namespace GGJ21.Gameplay.Objects
     {
         public Transform objectContainer;
 
+        #if UNITY_EDITOR
+        public SpriteRenderer debugRenderer;
+        #endif
+        
         private GameObject[] objectAnchors;
         private ObjectComponent[] objects;
 
@@ -33,9 +37,25 @@ namespace GGJ21.Gameplay.Objects
             objects = new ObjectComponent[ObjectAnchorCount];
         }
 
+        public void Initialize()
+        {
+            #if UNITY_EDITOR
+            MarkGoalObject(false);
+            #endif
+        }
+
         public void AddObjectToAnchor(int index, ObjectComponent objectComponent)
         {
             objects[index] = objectComponent;
         }
+
+        #if UNITY_EDITOR
+
+        public void MarkGoalObject(bool mark)
+        {
+            debugRenderer.enabled = mark;
+        }
+
+        #endif
     }
 }
