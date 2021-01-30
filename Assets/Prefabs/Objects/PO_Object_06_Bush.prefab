@@ -14,6 +14,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1285821815166786055, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285821815166786055, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285821815166786055, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285821815166786055, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -65,13 +80,28 @@ PrefabInstance:
     - target: {fileID: 1285821815166786056, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: m_Name
-      value: PO_Object_Bin01
+      value: PO_Object_06_Bush
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762844924319093560, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762844924319093560, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762844924319093560, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5690537255253024453, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f859b2c69e1671348917115760af3608,
+      objectReference: {fileID: 21300000, guid: d0c82d14827e09043bcebca7fc05b65e,
         type: 3}
     - target: {fileID: 5690537255253024453, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
@@ -88,6 +118,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5690537255253024453, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 7804512808300212339, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: objectInfoArray.Array.size
@@ -96,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 7804512808300212339, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: objectInfoArray.Array.data[0].lang_de
-      value: "M\xFCll"
+      value: Busch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc1df011d95bb9a46a2745925915469d, type: 3}

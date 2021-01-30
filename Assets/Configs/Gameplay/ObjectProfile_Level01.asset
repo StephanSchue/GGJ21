@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: ObjectProfile_Level01
   m_EditorClassIdentifier: 
   objects:
+  - {fileID: 4248299954053814605, guid: 8fe079ababd95da43bf7a11a25070481, type: 3}
+  - {fileID: 4248299954053814605, guid: 68c297009c7fd764382658997b4e7530, type: 3}
   - {fileID: 4248299954053814605, guid: 451e9450b57dd2d4c960badf01a4a6b8, type: 3}
   - {fileID: 4248299954053814605, guid: 49cb98dc21bc53b4dbc52d4c69ee6e4d, type: 3}
-  - {fileID: 4248299954053814605, guid: 68c297009c7fd764382658997b4e7530, type: 3}
   - {fileID: 4248299954053814605, guid: 38de6e3626253d8418f9b3eb6e22b675, type: 3}
-  - {fileID: 4248299954053814605, guid: 8fe079ababd95da43bf7a11a25070481, type: 3}
   - {fileID: 4248299954053814605, guid: 8458390923a3f454ca292a629f89de7d, type: 3}
   - {fileID: 4248299954053814605, guid: 81a0ff78847e5674fbab70cb0fcf0fa1, type: 3}
   - {fileID: 4248299954053814605, guid: 495c96602f236ad44951e62fd915d211, type: 3}

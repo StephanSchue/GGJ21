@@ -14,6 +14,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1285821815166786055, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285821815166786055, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285821815166786055, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285821815166786055, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -65,8 +80,24 @@ PrefabInstance:
     - target: {fileID: 1285821815166786056, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: m_Name
-      value: PO_Object_Bin
+      value: PO_Object_08_Flowers
       objectReference: {fileID: 0}
+    - target: {fileID: 1762844924319093560, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762844924319093560, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690537255253024453, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aae34bc84b2da5e4c866e476e7294a6d,
+        type: 3}
     - target: {fileID: 5690537255253024453, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: m_Color.b
@@ -75,12 +106,17 @@ PrefabInstance:
     - target: {fileID: 5690537255253024453, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5690537255253024453, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.89725685
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690537255253024453, guid: dc1df011d95bb9a46a2745925915469d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 7804512808300212339, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
@@ -90,7 +126,7 @@ PrefabInstance:
     - target: {fileID: 7804512808300212339, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: objectInfoArray.Array.data[0].lang_de
-      value: "M\xFCll"
+      value: Blumen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc1df011d95bb9a46a2745925915469d, type: 3}
