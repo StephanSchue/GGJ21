@@ -45,4 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardOrigin: {fileID: 0}
   character: {fileID: 0}
+  matchConditions: {fileID: 11400000, guid: 73871e4bf689b404aab7daf1dd567dde, type: 2}
   objectProfile: {fileID: 11400000, guid: a71071569e15e9144a2fb98162af09fb, type: 2}
