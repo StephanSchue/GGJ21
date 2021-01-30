@@ -7,17 +7,28 @@ public class PathMovement : MonoBehaviour
 {
     public Vector3 characterLookOrign = Vector2.right;
     public float mps = 1f;
-    public Transform walkCursor;
-    public SpriteRenderer walkCursorRenderer;
+    public GameObject walkCursorPrefab;
+    
+    private GameObject walkCursor;
+    private SpriteRenderer walkCursorRenderer;
 
     private Animator animator;
     private PathManager pathManager;
+    private bool walkCursorUsed = false;
 
     private readonly static string A_Velocity = "Velocity";
 
     private void Awake()
     {
-        walkCursorRenderer.enabled = false;
+        if(walkCursorPrefab != null)
+        {
+            walkCursor = Instantiate(walkCursorPrefab);
+            walkCursorRenderer = walkCursor.GetComponent<SpriteRenderer>();
+
+            walkCursorRenderer.enabled = false;
+            walkCursor.transform.position = transform.position;
+            walkCursorUsed = true;
+        }
     }
 
     private void Start()
@@ -30,8 +41,6 @@ public class PathMovement : MonoBehaviour
     {
         if(pathManager.FindPathToPosition(transform.position, destination, out Vector3[] path, out float length))
         {
-            Debug.Log("MoveTo");
-
             // Path
             DOTween.Kill(transform);
             transform.DOPath(path, mps, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased().OnComplete(MoveComplete); // .SetLookAt(1f, characterLookOrign, Vector3.up)
@@ -45,15 +54,19 @@ public class PathMovement : MonoBehaviour
             else
                 transform.eulerAngles = new Vector3(0f, 0f);
 
-            walkCursorRenderer.enabled = true;
-            walkCursor.transform.DOPath(path, mps * 5f, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased();
+            if(walkCursorUsed)
+            {
+                walkCursorRenderer.enabled = true;
+                walkCursor.transform.DOPath(path, mps * 5f, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased();
+            }
         }
     }
 
     private void MoveComplete()
     {
-        Debug.Log("MoveComplete");
         animator.SetFloat(A_Velocity, 0f);
-        walkCursorRenderer.enabled = false;
+
+        if(walkCursorUsed)
+            walkCursorRenderer.enabled = false;
     }
 }
