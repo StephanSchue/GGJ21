@@ -405,6 +405,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8188303417129680637, guid: 44ba9cc5da277014db3cb64085437b52,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188303417129680637, guid: 44ba9cc5da277014db3cb64085437b52,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188303417129680637, guid: 44ba9cc5da277014db3cb64085437b52,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8188303417129680639, guid: 44ba9cc5da277014db3cb64085437b52,
         type: 3}
       propertyPath: m_Name
@@ -558,6 +573,21 @@ PrefabInstance:
     - target: {fileID: 8188303417129680636, guid: 44ba9cc5da277014db3cb64085437b52,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188303417129680637, guid: 44ba9cc5da277014db3cb64085437b52,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188303417129680637, guid: 44ba9cc5da277014db3cb64085437b52,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188303417129680637, guid: 44ba9cc5da277014db3cb64085437b52,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8188303417129680639, guid: 44ba9cc5da277014db3cb64085437b52,
@@ -736,6 +766,21 @@ PrefabInstance:
     - target: {fileID: 8188303417129680636, guid: d69f4c041b04cf64a80984057b49e352,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188303417129680637, guid: d69f4c041b04cf64a80984057b49e352,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188303417129680637, guid: d69f4c041b04cf64a80984057b49e352,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188303417129680637, guid: d69f4c041b04cf64a80984057b49e352,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8188303417129680639, guid: d69f4c041b04cf64a80984057b49e352,
@@ -918,6 +963,21 @@ PrefabInstance:
     - target: {fileID: 3474742043760137093, guid: fd766c3965af34a4a9740d56f2aa0ff1,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846453320515108868, guid: fd766c3965af34a4a9740d56f2aa0ff1,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846453320515108868, guid: fd766c3965af34a4a9740d56f2aa0ff1,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846453320515108868, guid: fd766c3965af34a4a9740d56f2aa0ff1,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5846453320515108869, guid: fd766c3965af34a4a9740d56f2aa0ff1,
