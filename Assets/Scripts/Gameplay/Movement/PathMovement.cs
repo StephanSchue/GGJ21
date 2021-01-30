@@ -11,6 +11,8 @@ public class PathMovement : MonoBehaviour
     private Animator animator;
     private PathManager pathManager;
 
+    private readonly static string A_Velocity = "Velocity";
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -21,9 +23,11 @@ public class PathMovement : MonoBehaviour
     {
         if(pathManager.FindPathToPosition(transform.position, destination, out Vector3[] path, out float length))
         {
+            // Path
             transform.DOPath(path, mps, PathType.Linear).SetEase(Ease.Linear).SetSpeedBased().OnComplete(MoveComplete); // .SetLookAt(1f, characterLookOrign, Vector3.up)
-            animator.SetFloat("Velocity", 1f);
+            animator.SetFloat(A_Velocity, 1f);
 
+            // LookAt
             Vector3 heading = path[path.Length - 1] - path[0];
 
             if(heading.x > 0f)
@@ -35,6 +39,6 @@ public class PathMovement : MonoBehaviour
 
     private void MoveComplete()
     {
-        animator.SetFloat("Velocity", 0f);
+        animator.SetFloat(A_Velocity, 0f);
     }
 }
