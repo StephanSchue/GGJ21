@@ -7,6 +7,8 @@ TagManager:
   - SceneSettings
   - GameCamera
   - PathManager
+  - ObjectAnchor
+  - Tile
   layers:
   - Default
   - TransparentFX
