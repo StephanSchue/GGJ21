@@ -154,14 +154,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.77647066, g: 0.8235295, b: 0.32941177, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fbb92b239ab07534b9a2061727c6db93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -258,6 +258,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7158591416262674930}
     m_Modifications:
+    - target: {fileID: 140558452706868719, guid: 7451383fecf4a634f936abbc538822d0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9cc53e5b3dd048b489864f1a8632b172,
+        type: 3}
     - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
         type: 3}
       propertyPath: m_Pivot.x
@@ -292,16 +298,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
         type: 3}
@@ -553,6 +549,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7158591416262674930}
     m_Modifications:
+    - target: {fileID: 140558452706868719, guid: 7451383fecf4a634f936abbc538822d0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8631b504cbf4315499dad07fd81553ed,
+        type: 3}
     - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
         type: 3}
       propertyPath: m_Pivot.x
@@ -587,16 +589,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
         type: 3}
@@ -678,6 +670,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7158591416262674930}
     m_Modifications:
+    - target: {fileID: 140558452706868719, guid: 7451383fecf4a634f936abbc538822d0,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
         type: 3}
       propertyPath: m_Pivot.x
@@ -715,13 +712,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
         type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
-        type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 82.88379
       objectReference: {fileID: 0}
     - target: {fileID: 5084946532208528754, guid: 7451383fecf4a634f936abbc538822d0,
         type: 3}
