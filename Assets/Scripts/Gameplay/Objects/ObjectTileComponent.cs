@@ -75,6 +75,12 @@ namespace GGJ21.Gameplay.Objects
             return words;
         }
 
+
+        public GameObject GetRandomAnchor()
+        {
+            return objectAnchors[Random.Range(0, objectAnchors.Length)];
+        }
+
         #endregion
     }
 }
