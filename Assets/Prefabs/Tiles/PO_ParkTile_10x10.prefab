@@ -60,6 +60,10 @@ MonoBehaviour:
     status: 1
   - label: PO_Object_08_Flowers
     status: 1
+  - label: PO_Object_09_Pinetree
+    status: 1
+  - label: PO_Object_10_Obelisk
+    status: 1
 --- !u!1 &663680551450103637
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +206,10 @@ MonoBehaviour:
     status: 1
   - label: PO_Object_08_Flowers
     status: 1
+  - label: PO_Object_09_Pinetree
+    status: 1
+  - label: PO_Object_10_Obelisk
+    status: 1
 --- !u!1 &2361565670187189785
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +329,10 @@ MonoBehaviour:
   - label: PO_Object_07_Stones
     status: 1
   - label: PO_Object_08_Flowers
+    status: 1
+  - label: PO_Object_09_Pinetree
+    status: 1
+  - label: PO_Object_10_Obelisk
     status: 1
 --- !u!1 &5643354704975541676
 GameObject:
@@ -747,4 +759,8 @@ MonoBehaviour:
   - label: PO_Object_07_Stones
     status: 1
   - label: PO_Object_08_Flowers
+    status: 1
+  - label: PO_Object_09_Pinetree
+    status: 1
+  - label: PO_Object_10_Obelisk
     status: 1
