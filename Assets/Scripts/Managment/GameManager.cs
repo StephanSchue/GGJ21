@@ -603,11 +603,17 @@ namespace GGJ21.Game.Core
 
         private void OnButtonMapClick()
         {
+            if(gamePhase == GamePhase.Map)
+                return;
+
             ChangeGamePhase(GamePhase.Map);
         }
 
         private void OnButtonWordsClick()
         {
+            if(gamePhase == GamePhase.Words)
+                return;
+
             ChangeGamePhase(GamePhase.Words);
         }
 

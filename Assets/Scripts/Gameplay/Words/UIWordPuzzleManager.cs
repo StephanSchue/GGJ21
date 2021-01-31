@@ -35,7 +35,9 @@ namespace GGJ21.Gameplay.Words
             for(int i = 0; i < wordPieceCount; i++)
             {
                 wordPieces[i] = Instantiate(wordPiecePrefab, wordPieceContainer);
-                wordPieces[i].SetPositionInParent();
+
+                Vector2Int coordinates = new Vector2Int();
+                wordPieces[i].SetPositionInParent(coordinates);
 
                 int index = i;
                 wordPieces[i].OnClick.AddListener(() => TileClicked(index));
@@ -58,7 +60,7 @@ namespace GGJ21.Gameplay.Words
             for(int i = 0; i < wordPuzzleCollection.wordPuzzles.Length; i++)
             {
                 WordPuzzle wordPuzzle = wordPuzzleCollection.wordPuzzles[i];
-                Debug.Log($"SetWord: {wordPuzzle.word}");
+                //Debug.Log($"SetWord: {wordPuzzle.word}");
 
                 for(int x = 0; x < wordPuzzle.fragments.Length; x++)
                 {
@@ -101,10 +103,10 @@ namespace GGJ21.Gameplay.Words
                         currentWordField.SetCompleted();
                         ++wordFieldIndex;
                     }
-                    else
+                    
+                    if(wordFieldIndex == uIWorldFields.Length)
                     {
                         // Finished
-                        found = true;
                         FinishedPuzzle();
                     }
                     
@@ -116,6 +118,9 @@ namespace GGJ21.Gameplay.Words
         private void FinishedPuzzle()
         {
             Debug.Log("FinishedPuzzle");
+
+            if(OnPuzzleSolved != null)
+                OnPuzzleSolved.Invoke();
         }
     
         private void TileClicked(int index)

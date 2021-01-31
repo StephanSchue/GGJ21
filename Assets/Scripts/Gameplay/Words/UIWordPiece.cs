@@ -58,10 +58,12 @@ namespace GGJ21.Gameplay.Words
             ChangeVisual();
         }
 
-        public void SetPositionInParent()
+        public void SetPositionInParent(Vector2Int coordinates)
         {
-            Rect area = parentRectTransform.rect;
+            //float positionX = coordinates.x * 100f;
+            //float positionY = coordinates.y * 100f;
 
+            Rect area = parentRectTransform.rect;
             float xSize = Mathf.Abs(area.width * 0.5f) - dimesions.x;
             float ySize = Mathf.Abs(area.height * 0.5f) - dimesions.y;
 
@@ -69,7 +71,6 @@ namespace GGJ21.Gameplay.Words
             float positionY = Random.Range(-ySize, ySize);
 
             rectTransform.anchoredPosition = new Vector2(positionX, positionY);
-
             basePosition = transform.position;
         }
     
