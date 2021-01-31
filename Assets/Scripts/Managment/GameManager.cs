@@ -575,7 +575,7 @@ namespace GGJ21.Game.Core
         private void CallWordPuzzle()
         {
             inputManager.SetInputActive(false);
-            uiWordManager.ShowPuzzle(wordManager.CurrentWordPuzzle);
+            uiWordManager.InitializePuzzle(wordManager.CurrentWordPuzzle);
             uiManager.ChangeUIPanel("WordPuzzle");
         }
 

@@ -26,7 +26,7 @@ namespace GGJ21.Gameplay.Words
 
         public void Register(UIWordPiece wordPiece, out Vector3 position)
         {
-            wordPiece.status = WordPieceStatus.Sorted;
+            wordPiece.SetStatus(WordPieceStatus.Sorted);
             linkedPieces.Add(wordPiece);
 
             Vector3 startPosition = transform.position + positionOffset;
@@ -37,7 +37,7 @@ namespace GGJ21.Gameplay.Words
 
         public void UnRegister(UIWordPiece wordPiece)
         {
-            wordPiece.status = WordPieceStatus.Free;
+            wordPiece.SetStatus(WordPieceStatus.Free);
             int indexRemoved = linkedPieces.IndexOf(wordPiece);
             linkedPieces.Remove(wordPiece);
             Reorder(indexRemoved);
@@ -65,6 +65,14 @@ namespace GGJ21.Gameplay.Words
                 OnReoder.Invoke();
         }
 
+        public void SetCompleted()
+        {
+            for(int i = 0; i < linkedPieces.Count; i++)
+                linkedPieces[i].SetLocked();
+        }
+
+        #region Gizmos
+
         private void OnDrawGizmos()
         {
             Vector3 startPosition = transform.position + positionOffset;
@@ -76,5 +84,7 @@ namespace GGJ21.Gameplay.Words
                 Gizmos.DrawSphere(position, 100f);
             }
         }
+
+        #endregion
     }
 }

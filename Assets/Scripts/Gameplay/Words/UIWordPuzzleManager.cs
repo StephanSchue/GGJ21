@@ -16,8 +16,11 @@ namespace GGJ21.Gameplay.Words
         private WordPuzzleCollection wordPuzzleCollection;
         private UIWordPiece[] wordPieces;
 
+        private int[] puzzleSolvedIndexes;
+
         private UIWorldField currentWordField => uIWorldFields[wordFieldIndex];
         private int wordFieldIndex = 0;
+        private int puzzlePieceIndex = 0;
 
         public UnityEvent OnMoveDone { get; private set; }
         public UnityEvent OnPuzzleSolved { get; private set; }
@@ -45,14 +48,74 @@ namespace GGJ21.Gameplay.Words
                 uIWorldFields[i].OnReoder.AddListener(ValidateInput);
         }
 
-        public void ShowPuzzle(WordPuzzleCollection wordPuzzleCollection)
+        public void InitializePuzzle(WordPuzzleCollection wordPuzzleCollection)
         {
+            this.puzzlePieceIndex = 0;
             this.wordPuzzleCollection = wordPuzzleCollection;
+            this.puzzleSolvedIndexes = new int[this.wordPuzzleCollection.wordPuzzles.Length];
+
+            // --- Setup word Puzzles ---
+            for(int i = 0; i < wordPuzzleCollection.wordPuzzles.Length; i++)
+            {
+                WordPuzzle wordPuzzle = wordPuzzleCollection.wordPuzzles[i];
+                Debug.Log($"SetWord: {wordPuzzle.word}");
+
+                for(int x = 0; x < wordPuzzle.fragments.Length; x++)
+                {
+                    wordPieces[puzzlePieceIndex].Initialize(wordPuzzle.fragments[x]);
+                    ++puzzlePieceIndex;
+                }
+            }
+
+            for(int i = puzzlePieceIndex; i < wordPieceCount; i++)
+            {
+                wordPieces[i].Initialize("X");
+            }
         }
 
         public void ValidateInput()
         {
-            Debug.Log("ValidateInput");
+            // --- Collect Word ---
+            string validateWord = "";
+
+            for(int i = 0; i < currentWordField.linkedPieces.Count; i++)
+            {
+                UIWordPiece worldPiece = currentWordField.linkedPieces[i];
+                validateWord += worldPiece.content;
+            }
+
+            // --- Validate if Word is Working ---
+            bool found = false;
+
+            for(int i = 0; i < wordPuzzleCollection.wordPuzzles.Length; i++)
+            {
+                WordPuzzle wordPuzzle = wordPuzzleCollection.wordPuzzles[i];
+
+                if(validateWord == wordPuzzle.word)
+                {
+                    if(wordFieldIndex < uIWorldFields.Length)
+                    {
+                        // Still things to solve
+                        found = true;
+                        puzzleSolvedIndexes[wordFieldIndex] = i;
+                        currentWordField.SetCompleted();
+                        ++wordFieldIndex;
+                    }
+                    else
+                    {
+                        // Finished
+                        found = true;
+                        FinishedPuzzle();
+                    }
+                    
+                    break;
+                }
+            }
+        }
+
+        private void FinishedPuzzle()
+        {
+            Debug.Log("FinishedPuzzle");
         }
     
         private void TileClicked(int index)
