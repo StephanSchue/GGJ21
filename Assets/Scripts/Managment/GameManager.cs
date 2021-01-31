@@ -504,6 +504,7 @@ namespace GGJ21.Game.Core
             (goalTile,puzzleTiles) = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile, winConditionValue);
            
             wordManager.CreateWordPuzzles(puzzleTiles, wordCount, language);
+            uiWordManager.HideWordList();
 
             ShowGame();
 
@@ -577,12 +578,33 @@ namespace GGJ21.Game.Core
             inputManager.SetInputActive(false);
             uiWordManager.InitializePuzzle(wordManager.CurrentWordPuzzle);
             uiManager.ChangeUIPanel("WordPuzzle");
+
+            #if UNITY_EDITOR
+            if(debug)
+            {
+                Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
+                objectGenerator.ObjectTiles[coordinates.x, coordinates.y].MarkGoalObject(true);
+            }
+            #endif
+        }
+
+        private void CallNewWordPuzzle()
+        {
+            wordManager.NextWordPuzzle();
+            uiWordManager.ClearWordList();
+
+            #if UNITY_EDITOR
+            Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
+            objectGenerator.ObjectTiles[coordinates.x, coordinates.y].MarkGoalObject(false);
+            #endif
+
+            CallWordPuzzle();
         }
 
         private void OnPuzzleSolved()
         {
             ++Score;
-            ShowGame();
+            CallMapPanel();
         }
 
         // --- Button Actions ---
@@ -738,9 +760,6 @@ namespace GGJ21.Game.Core
 
         private void MoveToComplete()
         {
-            if(debug)
-                Score = winCondition.puzzleCount;
-
             if(markedTile == goalTile && CheckMatchConditions(out MatchResult matchResult) && matchResult == MatchResult.Win)
                 PlayFinishAnimation(matchResult);
             else if(foundMarkedObject)
@@ -757,6 +776,9 @@ namespace GGJ21.Game.Core
         {
             markedObject = null;
             inputManager.SetInputActive(true);
+
+            if(wordManager.CurrentWordPuzzle.coordinate == markedTile)
+                CallNewWordPuzzle();
         }
 
         private void PlayFinishAnimation(MatchResult matchResult)

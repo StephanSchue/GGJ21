@@ -58,7 +58,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 708c9f0727676f04885e14b709077a39, type: 3}
   - {fileID: 21300000, guid: 15ed8c5695f2bd44189223eba60b57fa, type: 3}
   mps: 5000
-  scaleDownValue: 0.75
+  scaleDownValue: 0.7
   scaleDownDuration: 0.25
   button: {fileID: 2455918697810705717}
   textField: {fileID: 154875777999658677}
@@ -125,7 +125,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.176949, g: 0.8018868, b: 0.16189034, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:

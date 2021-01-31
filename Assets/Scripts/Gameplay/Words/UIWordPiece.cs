@@ -56,6 +56,10 @@ namespace GGJ21.Gameplay.Words
             content = text;
             textField.text = text;
             ChangeVisual();
+
+            transform.parent = parentRectTransform;
+            transform.position = basePosition;
+            SetStatus(WordPieceStatus.Free);
         }
 
         public void SetPositionInParent(Vector2Int coordinates)

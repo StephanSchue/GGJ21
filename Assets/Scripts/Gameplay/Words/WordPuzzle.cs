@@ -8,9 +8,11 @@ namespace GGJ21.Gameplay.Words
     public struct WordPuzzleCollection
     {
         public WordPuzzle[] wordPuzzles;
+        public Vector2Int coordinate;
 
-        public WordPuzzleCollection(string[] words)
+        public WordPuzzleCollection(Vector2Int coordinate, string[] words)
         {
+            this.coordinate = coordinate;
             wordPuzzles = new WordPuzzle[words.Length];
 
             for(int i = 0; i < words.Length; i++)

@@ -10,13 +10,18 @@ namespace GGJ21.Gameplay.Words
         public RectTransform rectTransform;
         public List<UIWordPiece> linkedPieces = new List<UIWordPiece>();
         public Vector3 positionOffset = Vector3.zero;
-        public Vector3[] positions = new Vector3[5];
+
+        public float width = 90f;
+        private Vector3[] positions = new Vector3[5];
 
         public UnityEvent OnReoder { get; private set; }
 
         private void Awake()
         {
             OnReoder = new UnityEvent();
+
+            for(int i = 0; i < positions.Length; i++)
+                positions[i] = new Vector3(width * i, 0f);
         }
 
         public bool HasFreePosition()
@@ -41,6 +46,11 @@ namespace GGJ21.Gameplay.Words
             int indexRemoved = linkedPieces.IndexOf(wordPiece);
             linkedPieces.Remove(wordPiece);
             Reorder(indexRemoved);
+        }
+
+        public void Clear()
+        {
+            linkedPieces.Clear();
         }
 
         private void Reorder(int indexRemoved)
