@@ -472,9 +472,9 @@ MonoBehaviour:
   fadeInDuration: 0
   fadeOutDuration: 0
   textfields:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3242518919749915442}
+  - {fileID: 8479495495720376996}
+  - {fileID: 875711275012349629}
 --- !u!222 &8958129885371578896
 CanvasRenderer:
   m_ObjectHideFlags: 0
