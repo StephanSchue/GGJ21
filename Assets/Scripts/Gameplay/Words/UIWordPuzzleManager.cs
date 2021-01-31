@@ -12,6 +12,7 @@ namespace GGJ21.Gameplay.Words
         public Transform wordPieceContainer;
         public int wordPieceCount = 25;
 
+        public UIWordList wordList;
         public UIWorldField[] uIWorldFields = new UIWorldField[3];
 
         private WordPuzzleCollection wordPuzzleCollection;
@@ -88,6 +89,8 @@ namespace GGJ21.Gameplay.Words
             {
                 wordPieces[i].Initialize("X");
             }
+
+            this.wordList.Clear();
         }
 
         public void ValidateInput()
@@ -133,6 +136,7 @@ namespace GGJ21.Gameplay.Words
         private void FinishedPuzzle()
         {
             Debug.Log("FinishedPuzzle");
+            wordList.Show(wordPuzzleCollection);
 
             if(OnPuzzleSolved != null)
                 OnPuzzleSolved.Invoke();
