@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GGJ21.Gameplay.Words
 {
@@ -9,7 +10,14 @@ namespace GGJ21.Gameplay.Words
         public RectTransform rectTransform;
         public List<UIWordPiece> linkedPieces = new List<UIWordPiece>();
         public Vector3 positionOffset = Vector3.zero;
-        public Vector3[] positions = new Vector3[5];        
+        public Vector3[] positions = new Vector3[5];
+
+        public UnityEvent OnReoder { get; private set; }
+
+        private void Awake()
+        {
+            OnReoder = new UnityEvent();
+        }
 
         public bool HasFreePosition()
         {
@@ -32,7 +40,6 @@ namespace GGJ21.Gameplay.Words
             wordPiece.status = WordPieceStatus.Free;
             int indexRemoved = linkedPieces.IndexOf(wordPiece);
             linkedPieces.Remove(wordPiece);
-
             Reorder(indexRemoved);
         }
 
@@ -44,8 +51,18 @@ namespace GGJ21.Gameplay.Words
             for(int i = 0; i < linkedPieces.Count; i++)
             {
                 Vector3 position = startPosition + positions[i];
-                linkedPieces[i].MoveToWordField(position);
-            }
+
+                if(i == linkedPieces.Count)
+                    linkedPieces[i].MoveToWordField(position, ReorderComplete);
+                else
+                    linkedPieces[i].MoveToWordField(position, null);
+            }  
+        }
+
+        private void ReorderComplete()
+        {
+            if(OnReoder != null)
+                OnReoder.Invoke();
         }
 
         private void OnDrawGizmos()

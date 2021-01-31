@@ -37,6 +37,8 @@ namespace GGJ21.Gameplay.Words
         private Vector3 basePosition;
         private Vector2 dimesions = new Vector2(100f, 100f);
 
+        private UnityAction moveToCallback;
+
         public WordPieceStatus status;
 
         private void Awake()
@@ -45,12 +47,13 @@ namespace GGJ21.Gameplay.Words
             rectTransform = GetComponent<RectTransform>();
 
             dimesions = new Vector2(rectTransform.rect.width, rectTransform.rect.height);
+            ChangeVisual();
         }
 
         public void Initialize(string text)
         {
             textField.text = text;
-            background.sprite = variations[Random.Range(0, variations.Length)];
+            ChangeVisual();
         }
 
         public void SetPositionInParent()
@@ -68,19 +71,34 @@ namespace GGJ21.Gameplay.Words
             basePosition = transform.position;
         }
     
-        public void MoveToWordField(Vector3 nextPosition)
+        public void MoveToWordField(Vector3 nextPosition, UnityAction callback)
         {
-            transform.DOMove(nextPosition, mps).SetSpeedBased();
+            moveToCallback = callback;
+
+            transform.DOMove(nextPosition, mps).SetSpeedBased().OnComplete(MoveComplete);
             transform.DOScale(new Vector3(scaleDownValue, scaleDownValue, scaleDownValue), scaleDownDuration);
             status = WordPieceStatus.Sorted;
         }
 
-        public void MoveBackToField()
+        public void MoveBackToField(UnityAction callback)
         {
-            transform.DOMove(basePosition, mps).SetSpeedBased();
+            moveToCallback = callback;
+
+            transform.DOMove(basePosition, mps).SetSpeedBased().OnComplete(MoveComplete);
             transform.DOScale(new Vector3(1f, 1f, 1f), scaleDownDuration);
             status = WordPieceStatus.Free; 
             transform.parent = parentRectTransform;
+        }
+
+        private void MoveComplete()
+        {
+            if(moveToCallback != null)
+                moveToCallback.Invoke();
+        }
+    
+        private void ChangeVisual()
+        {
+            background.sprite = variations[Random.Range(0, variations.Length)];
         }
     }
 }

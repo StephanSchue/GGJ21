@@ -19,12 +19,14 @@ namespace GGJ21.Gameplay.Words
         private UIWorldField currentWordField => uIWorldFields[wordFieldIndex];
         private int wordFieldIndex = 0;
 
+        public UnityEvent OnMoveDone { get; private set; }
         public UnityEvent OnPuzzleSolved { get; private set; }
 
         private void Awake()
         {
             OnPuzzleSolved = new UnityEvent();
 
+            // --- Word Pices ---
             wordPieces = new UIWordPiece[wordPieceCount];
 
             for(int i = 0; i < wordPieceCount; i++)
@@ -37,6 +39,12 @@ namespace GGJ21.Gameplay.Words
             }
         }
 
+        private void Start()
+        {
+            for(int i = 0; i < uIWorldFields.Length; i++)
+                uIWorldFields[i].OnReoder.AddListener(ValidateInput);
+        }
+
         public void ShowPuzzle(WordPuzzleCollection wordPuzzleCollection)
         {
             this.wordPuzzleCollection = wordPuzzleCollection;
@@ -44,7 +52,7 @@ namespace GGJ21.Gameplay.Words
 
         public void ValidateInput()
         {
-
+            Debug.Log("ValidateInput");
         }
     
         private void TileClicked(int index)
@@ -58,14 +66,14 @@ namespace GGJ21.Gameplay.Words
                 {
                     // Sort to next free field
                     currentWordField.Register(uiWordPiece, out Vector3 position);
-                    uiWordPiece.MoveToWordField(position);
+                    uiWordPiece.MoveToWordField(position, ValidateInput);
                 }
             }
             else
             {
                 // Sort Back
                 currentWordField.UnRegister(uiWordPiece);
-                uiWordPiece.MoveBackToField();
+                uiWordPiece.MoveBackToField(ValidateInput);
             }
         }
     }
