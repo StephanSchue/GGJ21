@@ -504,6 +504,7 @@ namespace GGJ21.Game.Core
             (goalTile,puzzleTiles) = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile, winConditionValue);
            
             wordManager.CreateWordPuzzles(puzzleTiles, wordCount, language);
+            uiWordManager.HideWordList();
 
             ShowGame();
 
@@ -577,6 +578,18 @@ namespace GGJ21.Game.Core
             inputManager.SetInputActive(false);
             uiWordManager.InitializePuzzle(wordManager.CurrentWordPuzzle);
             uiManager.ChangeUIPanel("WordPuzzle");
+
+            #if UNITY_EDITOR
+            Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
+            objectGenerator.ObjectTiles[coordinates.x, coordinates.y].MarkGoalObject(true);
+            #endif
+        }
+
+        private void CallNewWordPuzzle()
+        {
+            wordManager.NextWordPuzzle();
+            uiWordManager.ClearWordList();
+            CallWordPuzzle();
         }
 
         private void OnPuzzleSolved()
@@ -757,6 +770,9 @@ namespace GGJ21.Game.Core
         {
             markedObject = null;
             inputManager.SetInputActive(true);
+
+            if(wordManager.CurrentWordPuzzle.coordinate == markedTile)
+                CallNewWordPuzzle();
         }
 
         private void PlayFinishAnimation(MatchResult matchResult)

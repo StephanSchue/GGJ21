@@ -28,7 +28,7 @@ namespace GGJ21.Gameplay.Words
                 for(int x = 0; x < 3; x++)
                     localizedWords[x] = objectInfoArray[x].GetLocalizedString(language);
 
-                wordPuzzleCollections[i] = new WordPuzzleCollection(localizedWords);
+                wordPuzzleCollections[i] = new WordPuzzleCollection(tiles[i].Coordinate, localizedWords);
             }
         }
 

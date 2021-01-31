@@ -16,6 +16,8 @@ namespace GGJ21.Gameplay.Objects
         private GameObject[] objectAnchors;
         private ObjectComponent[] objects;
 
+        public Vector2Int Coordinate { get; private set; }
+
         public GameObject[] ObjectAnchors => objectAnchors;
         public int ObjectAnchorCount { get; private set; }
 
@@ -38,8 +40,10 @@ namespace GGJ21.Gameplay.Objects
             objects = new ObjectComponent[ObjectAnchorCount];
         }
 
-        public void Initialize()
+        public void Initialize(int x, int y)
         {
+            Coordinate = new Vector2Int(x, y);
+
             #if UNITY_EDITOR
             MarkGoalObject(false);
             #endif

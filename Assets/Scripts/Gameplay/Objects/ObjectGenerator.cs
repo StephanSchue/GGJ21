@@ -16,6 +16,8 @@ namespace GGJ21.Gameplay.Objects
         public int[] goalObjectCombination;
         public const int goalUniqueValue = 3;
 
+        public ObjectTileComponent[,] ObjectTiles => objectTiles;
+
         private void Awake()
         {
             
@@ -66,7 +68,7 @@ namespace GGJ21.Gameplay.Objects
             {
                 for(int x = 0; x < xLength; x++)
                 {
-                    objectTiles[x, y].Initialize();
+                    objectTiles[x, y].Initialize(x,y);
 
                     if(x == goalCoordinate.x && y == goalCoordinate.y) // Place Goal Tile
                         SetObjectTileComponent(objectProfile, objectTiles[x, y], y, goalObjectCombination);
@@ -76,9 +78,9 @@ namespace GGJ21.Gameplay.Objects
             }
 
             // --- Mark Goal ---
-            #if UNITY_EDITOR
-            objectTiles[goalCoordinate.x, goalCoordinate.y].MarkGoalObject(true);
-            #endif
+            //#if UNITY_EDITOR
+            //objectTiles[goalCoordinate.x, goalCoordinate.y].MarkGoalObject(true);
+            //#endif
 
             return (goalCoordinate, puzzleObjectTiles);
         }

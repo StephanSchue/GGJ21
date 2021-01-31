@@ -24,6 +24,8 @@ namespace GGJ21.Gameplay.Words
         private int wordFieldIndex = 0;
         private int puzzlePieceIndex = 0;
 
+        private string[] randomWordList = new string[] { "zz", "xy", "mp", "qw", "lz", "öä", "uq", "cx", "ya", "wq", "hx", "rq" };
+
         public UnityEvent OnMoveDone { get; private set; }
         public UnityEvent OnPuzzleSolved { get; private set; }
 
@@ -66,11 +68,16 @@ namespace GGJ21.Gameplay.Words
                 uIWorldFields[i].OnReoder.AddListener(ValidateInput);
         }
 
+
         public void InitializePuzzle(WordPuzzleCollection wordPuzzleCollection)
         {
             this.puzzlePieceIndex = 0;
+            this.wordFieldIndex = 0;
             this.wordPuzzleCollection = wordPuzzleCollection;
             this.puzzleSolvedIndexes = new int[this.wordPuzzleCollection.wordPuzzles.Length];
+
+            for(int i = 0; i < uIWorldFields.Length; i++)
+                uIWorldFields[i].Clear();
 
             // --- Setup word Puzzles ---
             for(int i = 0; i < wordPuzzleCollection.wordPuzzles.Length; i++)
@@ -85,12 +92,26 @@ namespace GGJ21.Gameplay.Words
                 }
             }
 
+            int index = 0;
+            int[] randomWordIndexes = GetArrayOfUniqueNumbers(randomWordList.Length);
+
             for(int i = puzzlePieceIndex; i < wordPieceCount; i++)
             {
-                wordPieces[i].Initialize("X");
+                wordPieces[i].Initialize(randomWordList[randomWordIndexes[index]]);
+                ++index;
             }
 
             this.wordList.Clear();
+        }
+
+        public void ClearWordList()
+        {
+            this.wordList.Clear();
+        }
+        
+        public void HideWordList()
+        {
+            this.wordList.Hide();
         }
 
         public void ValidateInput()
