@@ -47,6 +47,7 @@ namespace GGJ21.Game.Core
         // --- References ---
         public bool ingameRepresentation = false;
         public bool debug = false;
+        public bool winWithOne = false;
         public ResourceManager resourceManager;
         public AssetReference[] gameScenes;
 
@@ -581,25 +582,17 @@ namespace GGJ21.Game.Core
             uiWordManager.InitializePuzzle(wordManager.CurrentWordPuzzle);
             uiManager.ChangeUIPanel("WordPuzzle");
             OutputScore();
-
-            #if UNITY_EDITOR
-            if(debug)
-            {
-                Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
-                objectGenerator.ObjectTiles[coordinates.x, coordinates.y].MarkGoalObject(true);
-            }
-            #endif
-        }
+        }  
 
         private void CallNewWordPuzzle()
         {
-            wordManager.NextWordPuzzle();
-            uiWordManager.ClearWordList();
-
             #if UNITY_EDITOR
             Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
             objectGenerator.ObjectTiles[coordinates.x, coordinates.y].MarkGoalObject(false);
             #endif
+
+            wordManager.NextWordPuzzle();
+            uiWordManager.ClearWordList();
 
             CallWordPuzzle();
         }
@@ -608,6 +601,14 @@ namespace GGJ21.Game.Core
         {
             ++Score;
             CallMapPanel();
+
+            #if UNITY_EDITOR
+            if(debug)
+            {
+                Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
+                objectGenerator.ObjectTiles[coordinates.x, coordinates.y].MarkGoalObject(true);
+            }
+            #endif
         }
 
         // --- Button Actions ---
@@ -754,10 +755,19 @@ namespace GGJ21.Game.Core
 
         private void MoveToComplete()
         {
-            if(markedTile == goalTile && CheckMatchConditions(out MatchResult matchResult) && matchResult == MatchResult.Win)
+            if(winWithOne && markedTile == wordManager.CurrentWordPuzzle.coordinate)
+            {
+                matchResult = MatchResult.Win;
                 PlayFinishAnimation(matchResult);
+            }
+            else if(markedTile == wordManager.CurrentWordPuzzle.coordinate && CheckMatchConditions(out MatchResult matchResult) && matchResult == MatchResult.Win)
+            {
+                PlayFinishAnimation(matchResult);
+            }
             else if(foundMarkedObject)
+            {
                 InteractWithObject();
+            }
         }
 
         private void InteractWithObject()
