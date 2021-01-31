@@ -581,6 +581,7 @@ namespace GGJ21.Game.Core
 
         private void OnPuzzleSolved()
         {
+            ++Score;
             ShowGame();
         }
 

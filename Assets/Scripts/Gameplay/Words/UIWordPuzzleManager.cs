@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,16 +32,30 @@ namespace GGJ21.Gameplay.Words
 
             // --- Word Pices ---
             wordPieces = new UIWordPiece[wordPieceCount];
+            Vector2Int[] placementGrid = new Vector2Int[wordPieceCount];
+            int cowCount = 2;
+            int wordPieceHalfCount = wordPieceCount / cowCount;
+            Vector2Int position = new Vector2Int(125, 125);
+            int index = 0;
+
+            for(int y = 0; y < cowCount; y++)
+            {
+                for(int x = 0; x < wordPieceHalfCount; x++)
+                {
+                    placementGrid[index] = new Vector2Int(position.x * x, position.y * y);
+                    ++index;
+                }
+            }
+
+            int[] placementIndexes = GetArrayOfUniqueNumbers(wordPieceCount);
 
             for(int i = 0; i < wordPieceCount; i++)
             {
                 wordPieces[i] = Instantiate(wordPiecePrefab, wordPieceContainer);
+                wordPieces[i].SetPositionInParent(placementGrid[placementIndexes[i]]);
 
-                Vector2Int coordinates = new Vector2Int();
-                wordPieces[i].SetPositionInParent(coordinates);
-
-                int index = i;
-                wordPieces[i].OnClick.AddListener(() => TileClicked(index));
+                int eventIndex = i;
+                wordPieces[i].OnClick.AddListener(() => TileClicked(eventIndex));
             }
         }
 
@@ -60,7 +75,7 @@ namespace GGJ21.Gameplay.Words
             for(int i = 0; i < wordPuzzleCollection.wordPuzzles.Length; i++)
             {
                 WordPuzzle wordPuzzle = wordPuzzleCollection.wordPuzzles[i];
-                //Debug.Log($"SetWord: {wordPuzzle.word}");
+                Debug.Log($"SetWord: {wordPuzzle.word}");
 
                 for(int x = 0; x < wordPuzzle.fragments.Length; x++)
                 {
@@ -144,5 +159,23 @@ namespace GGJ21.Gameplay.Words
                 uiWordPiece.MoveBackToField(ValidateInput);
             }
         }
+
+        private int[] GetArrayOfUniqueNumbers(int maxValue)
+        {
+            int[] nums = Enumerable.Range(0, maxValue).ToArray();
+            //System.Random rnd = new System.Random();
+
+            // Shuffle the array
+            for(int i = 0; i < nums.Length; ++i)
+            {
+                int randomIndex = Random.Range(0, maxValue);
+                int temp = nums[randomIndex];
+                nums[randomIndex] = nums[i];
+                nums[i] = temp;
+            }
+
+            return nums;
+        }
+
     }
 }
