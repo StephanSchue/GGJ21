@@ -69,9 +69,9 @@ namespace GGJ21.Gameplay.Objects
                     objectTiles[x, y].Initialize();
 
                     if(x == goalCoordinate.x && y == goalCoordinate.y) // Place Goal Tile
-                        SetObjectTileComponent(objectProfile, objectTiles[x, y], goalObjectCombination);
+                        SetObjectTileComponent(objectProfile, objectTiles[x, y], y, goalObjectCombination);
                     else // Place Random Tile
-                        SetObjectTileComponent(objectProfile, objectTiles[x, y]);
+                        SetObjectTileComponent(objectProfile, objectTiles[x, y], y);
                 }
             }
 
@@ -93,7 +93,7 @@ namespace GGJ21.Gameplay.Objects
 
         #region Instantiate
 
-        private void SetObjectTileComponent(ObjectProfile objectProfile, ObjectTileComponent objectTileComponent, params int[] uniqueIDs)
+        private void SetObjectTileComponent(ObjectProfile objectProfile, ObjectTileComponent objectTileComponent, int row, params int[] uniqueIDs)
         {
             bool uniqueIDsSet = uniqueIDs != null && uniqueIDs.Length > 0;
             int anchorCount = objectTileComponent.ObjectAnchorCount;
@@ -146,17 +146,20 @@ namespace GGJ21.Gameplay.Objects
                 if(!anchorPlacement.IsLabelActive(objectComponentPrefab.name))
                     randomIds[i] = anchorPlacement.GetRandomFreeIndex();
 
-                ObjectComponent instance = InstantiateObject(objectProfile, anchor.transform, randomIds[i]);
+                ObjectComponent instance = InstantiateObject(objectProfile, anchor.transform, row, randomIds[i]);
 
                 objectComponents.Add(instance);
                 objectTileComponent.AddObjectToAnchor(i, instance);
             }
         }
 
-        private ObjectComponent InstantiateObject(ObjectProfile objectProfile, Transform anchor, int index)
+        private ObjectComponent InstantiateObject(ObjectProfile objectProfile, Transform anchor, int row, int index)
         {
             ObjectComponent objectComponentPrefab = objectProfile.objects[index];
             ObjectComponent objectComponentInstance = Instantiate(objectComponentPrefab, anchor);
+
+            int spriteOrderAdd = (row*10) + index;
+            objectComponentInstance.IncreaseSpriteOrder(spriteOrderAdd);
 
             return objectComponentInstance;
         }
