@@ -25,6 +25,7 @@ namespace GGJ21.Game.Core
 
         public enum GamePhase
         {
+            Intro,
             Map,
             Words,
             Pause,
@@ -224,6 +225,8 @@ namespace GGJ21.Game.Core
 
             switch(oldPhase)
             {
+                case GamePhase.Intro:
+                    break;
                 case GamePhase.Map:
                     break;
                 case GamePhase.Words:
@@ -245,6 +248,9 @@ namespace GGJ21.Game.Core
 
             switch(newPhase)
             {
+                case GamePhase.Intro:
+                    CallIntro();
+                    break;
                 case GamePhase.Map:
                     CallMapPanel();
                     break;
@@ -328,12 +334,19 @@ namespace GGJ21.Game.Core
                     new UIManager.UIButtonRegistationAction("Exit", QuitGame),
                 }));
 
+            uiManager.RegisterButtonActionsOnPanel(new UIManager.UIPanelButtonsRegistation("Intro",
+                new UIManager.UIButtonRegistationAction[]
+                {
+                    new UIManager.UIButtonRegistationAction("Continue", OnIntroContinue),
+                }));
+
             uiManager.RegisterButtonActionsOnPanel(new UIManager.UIPanelButtonsRegistation("Game",
                 new UIManager.UIButtonRegistationAction[]
                 {
                     new UIManager.UIButtonRegistationAction("Map", OnButtonMapClick),
                     new UIManager.UIButtonRegistationAction("Words", OnButtonWordsClick),
                     new UIManager.UIButtonRegistationAction("Menu", OnButtonPauseMenuClick),
+                    new UIManager.UIButtonRegistationAction("Help", OnButtonHelpClick),
                 }));
 
             uiManager.RegisterButtonActionsOnPanel(new UIManager.UIPanelButtonsRegistation("WordPuzzle",
@@ -342,6 +355,7 @@ namespace GGJ21.Game.Core
                     new UIManager.UIButtonRegistationAction("Map", OnButtonMapClick),
                     new UIManager.UIButtonRegistationAction("Words", OnButtonWordsClick),
                     new UIManager.UIButtonRegistationAction("Menu", OnButtonPauseMenuClick),
+                    new UIManager.UIButtonRegistationAction("Help", OnButtonHelpClick),
                 }));
 
             uiManager.RegisterButtonActionsOnPanel(new UIManager.UIPanelButtonsRegistation("Pause",
@@ -461,7 +475,7 @@ namespace GGJ21.Game.Core
         private void StartGame()
         {
             matchResult = MatchResult.None;
-            ShowGame();
+            CallIntro();
 
             Score = 0;
 
@@ -503,6 +517,12 @@ namespace GGJ21.Game.Core
         {
             yield return null;
             cameraManager.SetCameraEnabled(true);
+        }
+
+        private void CallIntro()
+        {
+            inputManager.SetInputActive(false);
+            uiManager.ChangeUIPanel("Intro");
         }
 
         private void ShowGame()
@@ -551,6 +571,16 @@ namespace GGJ21.Game.Core
         }
 
         // --- Button Actions ---
+
+        private void OnButtonHelpClick()
+        {
+            ChangeGamePhase(GamePhase.Intro);
+        }
+
+        private void OnIntroContinue()
+        {
+            ChangeGamePhase(GamePhase.Map);
+        }
 
         private void OnButtonMapClick()
         {
