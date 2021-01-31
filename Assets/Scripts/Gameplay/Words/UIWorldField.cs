@@ -81,7 +81,7 @@ namespace GGJ21.Gameplay.Words
             for(int i = 0; i < positions.Length; i++)
             {
                 Vector3 position = startPosition + positions[i];
-                Gizmos.DrawSphere(position, 100f);
+                Gizmos.DrawSphere(position, 1f);
             }
         }
 
