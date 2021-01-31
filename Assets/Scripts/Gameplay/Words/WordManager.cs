@@ -10,6 +10,7 @@ namespace GGJ21.Gameplay.Words
         public WordPuzzleCollection[] wordPuzzleCollections;
         private int currentWordPuzzleIndex = 0;
 
+        public int CurrentWordPuzzleIndex => currentWordPuzzleIndex;
         public WordPuzzleCollection CurrentWordPuzzle => wordPuzzleCollections[currentWordPuzzleIndex];
 
         public void CreateWordPuzzles(ObjectTileComponent[] tiles, int wordCount, string language = "")

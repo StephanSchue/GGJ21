@@ -484,6 +484,7 @@ namespace GGJ21.Game.Core
 
         private void StartGame()
         {
+            treasureCheast.Hide();
             matchResult = MatchResult.None;
             CallIntro();
 
@@ -496,6 +497,7 @@ namespace GGJ21.Game.Core
 
         private void RestartGame()
         {
+            treasureCheast.Hide();
             matchResult = MatchResult.None;
 
             SetPlayerPosition();
@@ -612,6 +614,15 @@ namespace GGJ21.Game.Core
                 objectGenerator.ObjectTiles[coordinates.x, coordinates.y].MarkGoalObject(true);
             }
             #endif
+
+            if(Score == winCondition.puzzleCount)
+            {
+                Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
+                GameObject anchor = objectGenerator.ObjectTiles[coordinates.x, coordinates.y].GetRandomAnchor();
+
+                treasureCheast.transform.position = anchor.transform.position;
+                treasureCheast.Show();
+            }
         }
 
         // --- Button Actions ---
@@ -784,7 +795,7 @@ namespace GGJ21.Game.Core
             markedObject = null;
             inputManager.SetInputActive(true);
 
-            if(wordManager.CurrentWordPuzzle.coordinate == markedTile)
+            if(wordManager.CurrentWordPuzzle.coordinate == markedTile && Score == wordManager.CurrentWordPuzzleIndex+1)
                 CallNewWordPuzzle();
         }
 
