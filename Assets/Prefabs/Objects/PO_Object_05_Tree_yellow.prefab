@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 7804512808300212339, guid: dc1df011d95bb9a46a2745925915469d,
         type: 3}
       propertyPath: objectInfoArray.Array.data[0].lang_de
-      value: Gelbblattbaum
+      value: Yellowtree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc1df011d95bb9a46a2745925915469d, type: 3}
