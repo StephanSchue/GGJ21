@@ -51,6 +51,8 @@ MonoBehaviour:
   debug: 1
   resourceManager: {fileID: 8204912246798938564}
   gameScenes:
+  - m_AssetGUID: 5ec33a76286031f459a6c1b6d3b52f1a
+    m_SubObjectName: 
   - m_AssetGUID: 2cda990e2423bbf4892e6590ba056729
     m_SubObjectName: 
 --- !u!114 &8204912246798938564

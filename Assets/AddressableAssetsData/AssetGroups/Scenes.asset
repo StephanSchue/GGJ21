@@ -18,11 +18,17 @@ MonoBehaviour:
   m_GUID: 190c51f1e44442c46881136ccd500d6d
   m_SerializeEntries:
   - m_GUID: 2cda990e2423bbf4892e6590ba056729
-    m_Address: Assets/Scenes/Level01.unity
+    m_Address: Assets/Scenes/Level01_10x10.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
     m_TargetAsset: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
+  - m_GUID: 5ec33a76286031f459a6c1b6d3b52f1a
+    m_Address: Assets/Scenes/Level01_5x5.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 5ec33a76286031f459a6c1b6d3b52f1a, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 5ec33a76286031f459a6c1b6d3b52f1a, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b39612a60e264f54eba1f8f170f9e7a9, type: 2}
   m_SchemaSet:
