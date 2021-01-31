@@ -91,6 +91,7 @@ namespace GGJ21.Game.Core
 
         private ObjectTileComponent[] puzzleTiles;
         private Vector2Int goalTile;
+        private TreasureCheast treasureCheast;
 
         private Vector2Int markedTile;
         private ObjectComponent markedObject;
@@ -474,7 +475,9 @@ namespace GGJ21.Game.Core
 
                 if(!boardManagerListenerSet)
                     boardManagerListenerSet = true;
-                
+
+                treasureCheast = sceneSettings.treasureCheast;
+
                 StartGame();
             }
         }

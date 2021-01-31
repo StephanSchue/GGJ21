@@ -11,6 +11,7 @@ namespace GGJ21.General
         [Header("References")]
         public Transform boardOrigin;
         public PathMovement character;
+        public TreasureCheast treasureCheast;
 
         [Header("Profiles")]
         public MatchConditionsProfile matchConditions;
