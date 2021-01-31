@@ -39,6 +39,7 @@ namespace GGJ21.Gameplay.Words
 
         private UnityAction moveToCallback;
 
+        public string content { get; private set; }
         public WordPieceStatus status;
 
         private void Awake()
@@ -52,14 +53,17 @@ namespace GGJ21.Gameplay.Words
 
         public void Initialize(string text)
         {
+            content = text;
             textField.text = text;
             ChangeVisual();
         }
 
-        public void SetPositionInParent()
+        public void SetPositionInParent(Vector2Int coordinates)
         {
-            Rect area = parentRectTransform.rect;
+            //float positionX = coordinates.x * 100f;
+            //float positionY = coordinates.y * 100f;
 
+            Rect area = parentRectTransform.rect;
             float xSize = Mathf.Abs(area.width * 0.5f) - dimesions.x;
             float ySize = Mathf.Abs(area.height * 0.5f) - dimesions.y;
 
@@ -67,7 +71,6 @@ namespace GGJ21.Gameplay.Words
             float positionY = Random.Range(-ySize, ySize);
 
             rectTransform.anchoredPosition = new Vector2(positionX, positionY);
-
             basePosition = transform.position;
         }
     
@@ -77,7 +80,7 @@ namespace GGJ21.Gameplay.Words
 
             transform.DOMove(nextPosition, mps).SetSpeedBased().OnComplete(MoveComplete);
             transform.DOScale(new Vector3(scaleDownValue, scaleDownValue, scaleDownValue), scaleDownDuration);
-            status = WordPieceStatus.Sorted;
+            SetStatus(WordPieceStatus.Sorted);
         }
 
         public void MoveBackToField(UnityAction callback)
@@ -86,7 +89,7 @@ namespace GGJ21.Gameplay.Words
 
             transform.DOMove(basePosition, mps).SetSpeedBased().OnComplete(MoveComplete);
             transform.DOScale(new Vector3(1f, 1f, 1f), scaleDownDuration);
-            status = WordPieceStatus.Free; 
+            SetStatus(WordPieceStatus.Free); 
             transform.parent = parentRectTransform;
         }
 
@@ -99,6 +102,29 @@ namespace GGJ21.Gameplay.Words
         private void ChangeVisual()
         {
             background.sprite = variations[Random.Range(0, variations.Length)];
+        }
+    
+        public void SetStatus(WordPieceStatus newStatus)
+        {
+            switch(newStatus)
+            {
+                case WordPieceStatus.Free:
+                    button.interactable = true;
+                    break;
+                case WordPieceStatus.Sorted:
+                    button.interactable = true;
+                    break;
+                case WordPieceStatus.Finished:
+                    button.interactable = false;
+                    break;
+            }
+
+            status = newStatus;
+        }
+
+        public void SetLocked()
+        {
+            SetStatus(WordPieceStatus.Finished);
         }
     }
 }

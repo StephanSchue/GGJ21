@@ -408,7 +408,7 @@ MonoBehaviour:
   wordPiecePrefab: {fileID: 7275741172693075812, guid: a290e64dfcc8d3f48b2653fc59d37d75,
     type: 3}
   wordPieceContainer: {fileID: 8433322869835192470}
-  wordPieceCount: 25
+  wordPieceCount: 16
   uIWorldFields:
   - {fileID: 6683872105782478888}
   - {fileID: 7608258518691114466}
