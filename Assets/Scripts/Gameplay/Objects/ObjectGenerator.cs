@@ -140,9 +140,15 @@ namespace GGJ21.Gameplay.Objects
             for(int i = 0; i < anchorCount; i++)
             {
                 GameObject anchor = objectTileComponent.ObjectAnchors[i];
-                ObjectComponent instance = InstantiateObject(objectProfile, anchor.transform, randomIds[i]);
-                objectComponents.Add(instance);
+                ObjectPlacement anchorPlacement = objectTileComponent.objectAnchorsInfo[i];
+                ObjectComponent objectComponentPrefab = objectProfile.objects[randomIds[i]];
 
+                if(!anchorPlacement.IsLabelActive(objectComponentPrefab.name))
+                    randomIds[i] = anchorPlacement.GetRandomFreeIndex();
+
+                ObjectComponent instance = InstantiateObject(objectProfile, anchor.transform, randomIds[i]);
+
+                objectComponents.Add(instance);
                 objectTileComponent.AddObjectToAnchor(i, instance);
             }
         }

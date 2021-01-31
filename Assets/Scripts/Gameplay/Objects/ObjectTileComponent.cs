@@ -7,6 +7,7 @@ namespace GGJ21.Gameplay.Objects
     public class ObjectTileComponent : MonoBehaviour
     {
         public Transform objectContainer;
+        public ObjectPlacement[] objectAnchorsInfo;
 
         #if UNITY_EDITOR
         public SpriteRenderer debugRenderer;
