@@ -536,6 +536,7 @@ namespace GGJ21.Game.Core
 
         private void ShowGame()
         {
+            OutputScore();
             uiManager.ChangeUIPanel("Game");
         }
 
@@ -570,7 +571,8 @@ namespace GGJ21.Game.Core
         private void CallMapPanel()
         {
             inputManager.SetInputActive(true);
-            uiManager.ChangeUIPanel("Game");
+            uiManager.ChangeUIPanel("Game"); 
+            OutputScore();
         }
 
         private void CallWordPuzzle()
@@ -578,6 +580,7 @@ namespace GGJ21.Game.Core
             inputManager.SetInputActive(false);
             uiWordManager.InitializePuzzle(wordManager.CurrentWordPuzzle);
             uiManager.ChangeUIPanel("WordPuzzle");
+            OutputScore();
 
             #if UNITY_EDITOR
             if(debug)
@@ -697,17 +700,8 @@ namespace GGJ21.Game.Core
 
         private void OutputScore()
         {
-            if(winCondition.condition == WinCondition.TreasureHunt && matchResult != MatchResult.Win)
-            {
-                if(_score >= winCondition.puzzleCount)
-                    uiManager.RaiseTextOutput("Score", string.Format("<color=#0BC74D>{0}/{1}</color>", _score, winCondition.puzzleCount));
-                else
-                    uiManager.RaiseTextOutput("Score", string.Format("{0}/{1}", _score, winCondition.puzzleCount));
-            } 
-            else
-            {
-                uiManager.RaiseTextOutput("Score", _score.ToString());
-            }
+            Debug.Log(string.Format("{0}/{1}", _score.ToString(), winCondition.puzzleCount));
+            uiManager.RaiseTextOutput("Score", string.Format("{0}/{1}", _score.ToString(), winCondition.puzzleCount));
         }
 
         private void OutputMoves()
