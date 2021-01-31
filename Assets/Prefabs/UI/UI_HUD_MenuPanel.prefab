@@ -247,7 +247,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: 425, y: 300}
+  m_SizeDelta: {x: 764.1599, y: 300}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7059172316321894680
 CanvasRenderer:
@@ -277,9 +277,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 561f7c16e9c48324ba2244ae21c419d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 708c9f0727676f04885e14b709077a39, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -744,7 +744,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 5a52a16bd4c41d8438ce02819e745bc0,
+        type: 3}
     - target: {fileID: 6305710220472173096, guid: ec74f0af48774fd4da88cb0c09d863d5,
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
@@ -889,7 +890,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 5a52a16bd4c41d8438ce02819e745bc0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec74f0af48774fd4da88cb0c09d863d5, type: 3}
 --- !u!224 &7034297332197839705 stripped
