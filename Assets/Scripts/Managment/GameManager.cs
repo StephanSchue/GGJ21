@@ -60,16 +60,19 @@ namespace GGJ21.Game.Core
         private PathManager pathManager;
         private ObjectGenerator objectGenerator;
         private WordManager wordManager;
+        private UIWordPuzzleManager uiWordManager;
 
         private PathMovement characterMovement;
         private InteractObjectComponent characterInteractor;
 
         private string language = "de";
+        private bool tutorialVisited = false;
 
         // States
         private ApplicationState applicationState;
         private GamePhase gamePhase;
         private GamePhase lastGamePhase;
+        private GamePhase beforeIntroPhase;
 
         private AssetReference currentGameScene;
 
@@ -392,6 +395,9 @@ namespace GGJ21.Game.Core
 
             objectGenerator = GetComponent<ObjectGenerator>();
             wordManager = GetComponent<WordManager>();
+            uiWordManager = uiManager.GetComponent<UIWordPuzzleManager>();
+
+            uiWordManager.OnPuzzleSolved.AddListener(OnPuzzleSolved);
 
             // --- Move to MainMenu ---
             if(ingameRepresentation)
@@ -478,6 +484,7 @@ namespace GGJ21.Game.Core
             CallIntro();
 
             Score = 0;
+            tutorialVisited = false;
 
             SetPlayerPosition();
             inputManager.SetInputActive(true);
@@ -521,6 +528,7 @@ namespace GGJ21.Game.Core
 
         private void CallIntro()
         {
+            beforeIntroPhase = gamePhase;
             inputManager.SetInputActive(false);
             uiManager.ChangeUIPanel("Intro");
         }
@@ -567,7 +575,13 @@ namespace GGJ21.Game.Core
         private void CallWordPuzzle()
         {
             inputManager.SetInputActive(false);
+            uiWordManager.ShowPuzzle(wordManager.CurrentWordPuzzle);
             uiManager.ChangeUIPanel("WordPuzzle");
+        }
+
+        private void OnPuzzleSolved()
+        {
+            ShowGame();
         }
 
         // --- Button Actions ---
@@ -579,7 +593,12 @@ namespace GGJ21.Game.Core
 
         private void OnIntroContinue()
         {
-            ChangeGamePhase(GamePhase.Map);
+            if(tutorialVisited)
+                ChangeGamePhase(GamePhase.Map);
+            else
+                ChangeGamePhase(GamePhase.Words);
+
+            tutorialVisited = true;
         }
 
         private void OnButtonMapClick()
@@ -675,6 +694,11 @@ namespace GGJ21.Game.Core
                 else
                     uiManager.RaiseTextOutput("Moves", string.Format("{0}/{1}", _remainingMoves, totalMoves));
             }
+        }
+
+        public WordPuzzleCollection GetCurrentWordPuzzle()
+        {
+            return wordManager.CurrentWordPuzzle;
         }
 
         #endregion

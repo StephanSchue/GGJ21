@@ -8,11 +8,13 @@ namespace GGJ21.Gameplay.Words
     public class WordManager : MonoBehaviour
     {
         public WordPuzzleCollection[] wordPuzzleCollections;
-        private int currentWordPuzzle = 0;
+        private int currentWordPuzzleIndex = 0;
+
+        public WordPuzzleCollection CurrentWordPuzzle => wordPuzzleCollections[currentWordPuzzleIndex];
 
         public void CreateWordPuzzles(ObjectTileComponent[] tiles, int wordCount, string language = "")
         {
-            currentWordPuzzle = 0;
+            currentWordPuzzleIndex = 0;
 
             int count = tiles.Length;
             wordPuzzleCollections = new WordPuzzleCollection[count];
@@ -32,9 +34,9 @@ namespace GGJ21.Gameplay.Words
 
         public bool NextWordPuzzle()
         {
-            if(currentWordPuzzle + 1 < wordPuzzleCollections.Length)
+            if(currentWordPuzzleIndex + 1 < wordPuzzleCollections.Length)
             {
-                ++currentWordPuzzle;
+                ++currentWordPuzzleIndex;
                 return true;
             }
 
