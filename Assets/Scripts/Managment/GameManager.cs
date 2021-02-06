@@ -57,6 +57,7 @@ namespace GGJ21.Game.Core
         private InputManager inputManager;
         private CameraManager cameraManager;
         private SceneSettings sceneSettings;
+        private Localisation.LocalisationManager localisationManager;
 
         private PathManager pathManager;
         private ObjectGenerator objectGenerator;
@@ -65,8 +66,7 @@ namespace GGJ21.Game.Core
 
         private PathMovement characterMovement;
         private InteractObjectComponent characterInteractor;
-
-        private string language = "de";
+        
         private bool tutorialVisited = false;
 
         // States
@@ -100,6 +100,7 @@ namespace GGJ21.Game.Core
         private LayerMask groundMask;
         private LayerMask objectMask;
 
+        // --- Properties ---
         public int RemainingMoves
         {
             get { return _remainingMoves; }
@@ -121,6 +122,12 @@ namespace GGJ21.Game.Core
                 OutputScore();
             }
         }
+
+        public bool OnMap => applicationState == ApplicationState.Game && gamePhase == GamePhase.Map;
+
+        public Vector3 PlayerPosition { get; private set; }
+
+        public Vector3 TargetPosition { get; private set; }
 
         #endregion
 
@@ -387,7 +394,8 @@ namespace GGJ21.Game.Core
 
             // --- Show UI ---
             uiManager.Show(UIManager.CANVAS_FADEIN_DURATION);
-            
+            localisationManager = GetComponent<Localisation.LocalisationManager>();
+
             // --- Initialize BoardMananger & InputManager ---
             inputManager = GetComponent<InputManager>();
             inputManager.cameraReference = Camera.main;
@@ -471,7 +479,7 @@ namespace GGJ21.Game.Core
                 int wordCount = matchConditionsProfile.winCondtion.wordCount;
 
                 (goalTile, puzzleTiles) = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile, winConditionValue);
-                wordManager.CreateWordPuzzles(puzzleTiles, wordCount, language);
+                wordManager.CreateWordPuzzles(puzzleTiles, wordCount, localisationManager.Language);
 
                 if(!boardManagerListenerSet)
                     boardManagerListenerSet = true;
@@ -509,7 +517,7 @@ namespace GGJ21.Game.Core
             objectGenerator.Deinitialize();
             (goalTile,puzzleTiles) = objectGenerator.Initialize(pathManager, sceneSettings.objectProfile, winConditionValue);
            
-            wordManager.CreateWordPuzzles(puzzleTiles, wordCount, language);
+            wordManager.CreateWordPuzzles(puzzleTiles, wordCount, localisationManager.Language);
             uiWordManager.HideWordList();
 
             ShowGame();
@@ -548,6 +556,7 @@ namespace GGJ21.Game.Core
 
         private void ProcessGame(float dt)
         {
+            // --- Navigation Input ---
             if(Input.GetKeyDown(KeyCode.Escape))
             {
                 if(gamePhase == GamePhase.Pause || gamePhase == GamePhase.GameOver)
@@ -559,6 +568,14 @@ namespace GGJ21.Game.Core
             {
                 CallRestart();
             }
+            else if(Application.isEditor && Input.GetKeyDown(KeyCode.Return))
+            {
+                OnPuzzleSolved();
+            }
+
+            // Update Player Position
+            if(gamePhase == GamePhase.Map)
+                PlayerPosition = characterMovement.transform.position;
         }
 
         private void EndGame()
@@ -605,20 +622,21 @@ namespace GGJ21.Game.Core
         private void OnPuzzleSolved()
         {
             ++Score;
-            CallMapPanel();
+            ChangeGamePhase(GamePhase.Map);
+
+            Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
+            ObjectTileComponent objectTileComponent = objectGenerator.ObjectTiles[coordinates.x, coordinates.y];
+            TargetPosition = objectTileComponent.GetComponent<PathComponent>().center.position;
 
             #if UNITY_EDITOR
             if(debug)
-            {
-                Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
-                objectGenerator.ObjectTiles[coordinates.x, coordinates.y].MarkGoalObject(true);
-            }
+                objectTileComponent.MarkGoalObject(true);
             #endif
 
+            // --- Show Treasure Cheast ---
             if(Score == winCondition.puzzleCount)
             {
-                Vector2Int coordinates = wordManager.CurrentWordPuzzle.coordinate;
-                GameObject anchor = objectGenerator.ObjectTiles[coordinates.x, coordinates.y].GetRandomAnchor();
+                GameObject anchor = objectTileComponent.GetRandomAnchor();
 
                 treasureCheast.transform.position = anchor.transform.position;
                 treasureCheast.Show();

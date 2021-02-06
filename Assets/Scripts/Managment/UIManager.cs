@@ -24,6 +24,7 @@ namespace GGJ21.General
         public struct UIPanel
         {
             public string name;
+            public Canvas canvas;
             public CanvasGroup canvasGroup;
             public UIPanelButton[] buttons;
             public UITextEvent[] textOuput;
@@ -36,24 +37,32 @@ namespace GGJ21.General
             {
                 canvasGroup.interactable = canvasGroup.blocksRaycasts = true;
                 canvasGroup.alpha = 1f;
+                canvas.enabled = true;
             }
 
             public void Show(float duration, float delay = 0f)
             {
                 canvasGroup.interactable = canvasGroup.blocksRaycasts = true;
                 canvasGroup.DOFade(1f, duration).SetDelay(delay);
+                canvas.enabled = true;
             }
 
             public void Hide()
             {
                 canvasGroup.interactable = canvasGroup.blocksRaycasts = false;
                 canvasGroup.alpha = 0f;
+                canvas.enabled = false;
             }
 
             public void Hide(float duration, float delay = 0f)
             {
                 canvasGroup.interactable = canvasGroup.blocksRaycasts = false;
-                canvasGroup.DOFade(0f, duration).SetDelay(delay);
+                canvasGroup.DOFade(0f, duration).SetDelay(delay).OnComplete(HideComplete);
+            }
+
+            private void HideComplete()
+            {
+                canvas.enabled = false;
             }
 
             #endregion

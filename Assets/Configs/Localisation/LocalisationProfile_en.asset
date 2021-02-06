@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3500b2c35d0fa40ba2e527ebdf9811, type: 3}
+  m_Name: LocalisationProfile_en
+  m_EditorClassIdentifier: 
+  language: 10
+  variables:
+  - variable: START
+    value: Start
+  - variable: EXIT
+    value: Beenden
+  - variable: COPYRIGHT
+    value: "\xA9 Programmierung von Stephan Sch\xFCritz | Grafiken von Nicole Tietze"
+  - variable: TITLE
+    value: Papierschnippsel Jagd
+  - variable: TUTORIAL_HEADLINE
+    value: Instructions
+  - variable: TUTORIAL_CONTENT
+    value: 'A treasure is hidden in the park and you are on the way to find it.
+
+      You
+      found some pieces of paper when you entered the park, they look like that they
+      will guide you to the treasue.
+
+
+      1. Solve the word puzzles
+
+      2.
+      Go to descriped Tile'
+  - variable: RESUME
+    value: Resume
+  - variable: RESTART
+    value: Restart
+  - variable: CONTINUE
+    value: Continue

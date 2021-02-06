@@ -8,17 +8,17 @@ namespace GGJ21.Gameplay.Objects
     [System.Serializable]
     public struct ObjectInfo
     {
-        public string lang_de;
         public string lang_en;
+        public string lang_de;
 
-        public string GetLocalizedString(string language)
+        public string GetLocalizedString(SystemLanguage language)
         {
             switch(language)
             {
-                case "de":
-                    return lang_de;
-                case "en":
+                case SystemLanguage.English:
                     return lang_en;
+                case SystemLanguage.German:
+                    return lang_de;
             }
 
             return "";

@@ -8,13 +8,18 @@ namespace GGJ21.Gameplay.Words
 {
     public class UIWordPuzzleManager : MonoBehaviour
     {
+        #region Settings/Variables
+
+        [Header("Components")]
         public UIWordPiece wordPiecePrefab;
         public Transform wordPieceContainer;
         public int wordPieceCount = 25;
 
+        [Header("UI Elements")]
         public UIWordList wordList;
         public UIWorldField[] uIWorldFields = new UIWorldField[3];
 
+        // --- Variables ---
         private WordPuzzleCollection wordPuzzleCollection;
         private UIWordPiece[] wordPieces;
 
@@ -28,6 +33,8 @@ namespace GGJ21.Gameplay.Words
 
         public UnityEvent OnMoveDone { get; private set; }
         public UnityEvent OnPuzzleSolved { get; private set; }
+
+        #endregion
 
         private void Awake()
         {
@@ -67,7 +74,6 @@ namespace GGJ21.Gameplay.Words
             for(int i = 0; i < uIWorldFields.Length; i++)
                 uIWorldFields[i].OnReoder.AddListener(ValidateInput);
         }
-
 
         public void InitializePuzzle(WordPuzzleCollection wordPuzzleCollection)
         {

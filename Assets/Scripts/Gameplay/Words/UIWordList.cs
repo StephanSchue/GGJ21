@@ -26,7 +26,7 @@ namespace GGJ21.Gameplay.Words
         public void Show(WordPuzzleCollection wordPuzzleCollection)
         {
             for(int i = 0; i < textfields.Length; i++)
-                textfields[i].text = $"- {wordPuzzleCollection.wordPuzzles[i].word}";
+                textfields[i].text = $"{wordPuzzleCollection.wordPuzzles[i].word}";
 
             canvasGroup.DOFade(1f, fadeInDuration);
         }

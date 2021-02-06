@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1973236856556533416}
   - component: {fileID: 5563364948622371500}
   - component: {fileID: 964248895552314482}
+  - component: {fileID: 766470857908812846}
   m_Layer: 0
   m_Name: PO_GameManager
   m_TagString: GameController
@@ -50,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingameRepresentation: 0
   debug: 1
+  winWithOne: 0
   resourceManager: {fileID: 8204912246798938564}
   gameScenes:
   - m_AssetGUID: 5ec33a76286031f459a6c1b6d3b52f1a
@@ -123,3 +125,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorGraphic: {fileID: 2800000, guid: 5500324e1ed348547b985d02feffd1a6, type: 3}
   cursorHotspot: {x: 0.17, y: 0.34}
+--- !u!114 &766470857908812846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204912246798938570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430fc84459e28db478698848eaad8214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  systemLanguage: 15
+  profiles:
+  - {fileID: 11400000, guid: 4e2abc179d1252b449e92c3064f1c507, type: 2}
+  - {fileID: 11400000, guid: 25cc5f5c6f7a9c444b922591c6b87fef, type: 2}
+  variables: []
+  values: []
