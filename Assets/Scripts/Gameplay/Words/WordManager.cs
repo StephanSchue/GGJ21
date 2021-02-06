@@ -8,7 +8,7 @@ namespace GGJ21.Gameplay.Words
     public class WordManager : MonoBehaviour
     {
         public WordPuzzleCollection[] wordPuzzleCollections;
-        private int currentWordPuzzleIndex = 0;
+        private int currentWordPuzzleIndex = -1;
 
         public int CurrentWordPuzzleIndex => currentWordPuzzleIndex;
         public WordPuzzleCollection CurrentWordPuzzle => wordPuzzleCollections[currentWordPuzzleIndex];

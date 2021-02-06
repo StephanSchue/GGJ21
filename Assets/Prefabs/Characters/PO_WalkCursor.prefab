@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4595962187019915623}
   - component: {fileID: 4595962187019915640}
   m_Layer: 0
-  m_Name: PO_WalkFlag
+  m_Name: PO_WalkCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0

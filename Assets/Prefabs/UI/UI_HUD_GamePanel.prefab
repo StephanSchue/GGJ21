@@ -1,26 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!223 &5031117005830575733
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6218224896018473744}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &8188303417129680639
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,9 +49,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8188303417129680639}
   m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!223 &5927471570835466967
 Canvas:
@@ -665,6 +644,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8188303417129680636}
     m_Modifications:
+    - target: {fileID: 39492181285239263, guid: 64c8087033e5ddc448564d96ab26b312,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2029845668926418803, guid: 64c8087033e5ddc448564d96ab26b312,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -822,12 +806,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64c8087033e5ddc448564d96ab26b312, type: 3}
---- !u!1 &6218224896018473744 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4053593119875246084, guid: 64c8087033e5ddc448564d96ab26b312,
-    type: 3}
-  m_PrefabInstance: {fileID: 7929383121056320276}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &591289452718067762 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7367463960518875942, guid: 64c8087033e5ddc448564d96ab26b312,

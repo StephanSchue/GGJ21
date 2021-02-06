@@ -57,6 +57,8 @@ namespace GGJ21.Gameplay.Words
             textField.text = text;
             ChangeVisual();
 
+            DOTween.Kill(transform);
+            transform.localScale = Vector3.one;
             transform.parent = parentRectTransform;
             transform.position = basePosition;
             SetStatus(WordPieceStatus.Free);
@@ -89,7 +91,7 @@ namespace GGJ21.Gameplay.Words
             moveToCallback = callback;
 
             transform.DOMove(basePosition, mps).SetSpeedBased().OnComplete(MoveComplete);
-            transform.DOScale(new Vector3(1f, 1f, 1f), scaleDownDuration);
+            transform.DOScale(Vector3.one, scaleDownDuration);
             SetStatus(WordPieceStatus.Free); 
             transform.parent = parentRectTransform;
         }

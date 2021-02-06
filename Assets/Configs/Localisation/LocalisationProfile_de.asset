@@ -35,3 +35,11 @@ MonoBehaviour:
     value: Neustart
   - variable: CONTINUE
     value: Fortsetzen
+  - variable: FOUND_PUZZLE
+    value: "Du hast ein R\xE4tsel gefunden!"
+  - variable: SOLVE_PUZZLE
+    value: "R\xE4tsel l\xF6sen"
+  - variable: SOLVED_PUZZLE
+    value: "Du hast das R\xE4tsel gel\xF6st.\nSuche nach dem beschrieben Ort."
+  - variable: SETUP_DESCRIPTION
+    value: "Wieviele Puzzle m\xF6chtest du l\xF6sen?"

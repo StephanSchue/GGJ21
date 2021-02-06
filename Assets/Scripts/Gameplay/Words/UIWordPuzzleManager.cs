@@ -138,7 +138,7 @@ namespace GGJ21.Gameplay.Words
             {
                 WordPuzzle wordPuzzle = wordPuzzleCollection.wordPuzzles[i];
 
-                if(validateWord == wordPuzzle.word)
+                if(wordPuzzle.Validate(validateWord))
                 {
                     if(wordFieldIndex < uIWorldFields.Length)
                     {

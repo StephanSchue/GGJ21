@@ -158,6 +158,7 @@ namespace GGJ21.General
     
         public void SetInputActive(bool active)
         {
+            Debug.Log($"SetInputActive: {active}");
             inputActive = active;
         }
     }

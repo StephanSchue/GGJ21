@@ -42,3 +42,13 @@ MonoBehaviour:
     value: Restart
   - variable: CONTINUE
     value: Continue
+  - variable: FOUND_PUZZLE
+    value: You found a Puzzle!
+  - variable: SOLVE_PUZZLE
+    value: Solve Puzzle
+  - variable: SOLVED_PUZZLE
+    value: 'You solved the puzzle!
+
+      Find the place descriped.'
+  - variable: SETUP_DESCRIPTION
+    value: How many puzzles do you want to solve?

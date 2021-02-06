@@ -139,7 +139,7 @@ public class PathManager : MonoBehaviour
         PathComponent pathComponent = new PathComponent();
         PathLink pathLink = new PathLink();
         int pathIndex = 0;
-        float minDistance = 20f;
+        float minDistance = 40f;
 
         for(int x = 0; x < pathGrid.GetLength(0); x++)
         {

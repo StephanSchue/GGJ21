@@ -23,7 +23,7 @@ namespace GGJ21.Gameplay.Objects
             
         }
 
-        public (Vector2Int, ObjectTileComponent[]) Initialize(PathManager pathManager, ObjectProfile objectProfile, int puzzleCount)
+        public void Initialize(PathManager pathManager, ObjectProfile objectProfile)
         {
             // --- Collect Tiles ---
             int xLength = pathManager.GridDimensions.x;
@@ -39,7 +39,20 @@ namespace GGJ21.Gameplay.Objects
                     objectTiles[x, y] = pathManager.PathGrid[x, y].GetComponent<ObjectTileComponent>();
                 }
             }
+            
+            // --- Fill Tiles ---
+            for(int y = 0; y < yLength; y++)
+            {
+                for(int x = 0; x < xLength; x++)
+                {
+                    objectTiles[x, y].Initialize(x,y);
+                    SetObjectTileComponent(objectProfile, objectTiles[x, y], y);
+                }
+            }
+        }
 
+        public (Vector2Int, ObjectTileComponent[]) GeneratePuzzleTiles(PathManager pathManager, ObjectProfile objectProfile, int puzzleCount)
+        {
             // --- Generate Unique Combination ---
             int objectCount = objectProfile.objects.Length;
 
@@ -61,26 +74,7 @@ namespace GGJ21.Gameplay.Objects
                 puzzleObjectTiles[i] = objectTiles[xAreaPuz, yAreaPuz];
             }
 
-            puzzleObjectTiles[puzzleCount-1] = objectTiles[goalCoordinate.x, goalCoordinate.y];
-
-            // --- Fill Tiles ---
-            for(int y = 0; y < yLength; y++)
-            {
-                for(int x = 0; x < xLength; x++)
-                {
-                    objectTiles[x, y].Initialize(x,y);
-
-                    if(x == goalCoordinate.x && y == goalCoordinate.y) // Place Goal Tile
-                        SetObjectTileComponent(objectProfile, objectTiles[x, y], y, goalObjectCombination);
-                    else // Place Random Tile
-                        SetObjectTileComponent(objectProfile, objectTiles[x, y], y);
-                }
-            }
-
-            // --- Mark Goal ---
-            //#if UNITY_EDITOR
-            //objectTiles[goalCoordinate.x, goalCoordinate.y].MarkGoalObject(true);
-            //#endif
+            puzzleObjectTiles[puzzleCount - 1] = objectTiles[goalCoordinate.x, goalCoordinate.y];
 
             return (goalCoordinate, puzzleObjectTiles);
         }
@@ -113,30 +107,30 @@ namespace GGJ21.Gameplay.Objects
                 bool uniqueCombi = true;
                 randomIds = GetArrayOfUniqueNumbers(objectCount);
 
-                if(anchorCount > goalUniqueValue)
-                {
-                    while(uniqueCombi)
-                    {
-                        int equalCount = 0;
+                //if(anchorCount > goalUniqueValue)
+                //{
+                //    while(uniqueCombi)
+                //    {
+                //        int equalCount = 0;
 
-                        for(int i = 0; i < anchorCount; i++)
-                        {
-                            for(int x = 0; x < anchorCount; x++)
-                            {
-                                if(randomIds[i] == goalObjectCombination[x])
-                                {
-                                    ++equalCount;
-                                    break;
-                                }
-                            }
-                        }
+                //        for(int i = 0; i < anchorCount; i++)
+                //        {
+                //            for(int x = 0; x < anchorCount; x++)
+                //            {
+                //                if(randomIds[i] == goalObjectCombination[x])
+                //                {
+                //                    ++equalCount;
+                //                    break;
+                //                }
+                //            }
+                //        }
 
-                        if(equalCount >= goalUniqueValue)
-                            randomIds = GetArrayOfUniqueNumbers(objectCount);
-                        else
-                            uniqueCombi = false;
-                    }
-                }
+                //        if(equalCount >= goalUniqueValue)
+                //            randomIds = GetArrayOfUniqueNumbers(objectCount);
+                //        else
+                //            uniqueCombi = false;
+                //    }
+                //}
             }
 
             for(int i = 0; i < anchorCount; i++)

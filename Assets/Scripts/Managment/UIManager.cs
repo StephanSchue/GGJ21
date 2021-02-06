@@ -75,6 +75,12 @@ namespace GGJ21.General
                     button.RegisterOnClickListener(buttonRegistation.callback);
             }
 
+            public void ActivateButton(string name, bool active)
+            {
+                if(FindButton(name, out UIPanelButton panelButton))
+                    panelButton.Activate(active);
+            }
+
             private bool FindButton(string buttonName, out UIPanelButton button)
             {
                 for(int i = 0; i < buttons.Length; i++)
@@ -127,6 +133,11 @@ namespace GGJ21.General
             public void RegisterOnClickListener(UnityAction callback)
             {
                 button.onClick.AddListener(callback);
+            }
+
+            public void Activate(bool active)
+            {
+                button.interactable = active;
             }
         }
 
@@ -286,6 +297,14 @@ namespace GGJ21.General
                     uiPanel.RegisterButtonAction(buttonsRegistation.buttonRegistationActions[i]);
             }
         }
+        
+        public void ActivateButton(string name, bool active)
+        {
+            UIPanel uiPanel = new UIPanel();
+
+            if(FindUIPanel(currentPanel, ref uiPanel))
+                uiPanel.ActivateButton(name, active);
+        }
 
         #endregion
 
@@ -297,6 +316,13 @@ namespace GGJ21.General
             string oldState = currentPanel;
             HideUIPanel(oldState, PANEL_FADEOUT_DURATION, delayOut);
 
+            // --- Enter New State ---
+            currentPanel = newState;
+            ShowUIPanel(newState, PANEL_FADEIN_DURATION, delayIn);
+        }
+
+        public void AddUIPanel(string newState, float delayIn = 0f)
+        {
             // --- Enter New State ---
             currentPanel = newState;
             ShowUIPanel(newState, PANEL_FADEIN_DURATION, delayIn);

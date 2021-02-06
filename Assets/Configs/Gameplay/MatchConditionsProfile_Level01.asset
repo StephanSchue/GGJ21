@@ -15,5 +15,5 @@ MonoBehaviour:
   helpDuration: 60
   winCondtion:
     condition: 0
-    puzzleCount: 3
+    puzzleCount: 1
     wordCount: 3

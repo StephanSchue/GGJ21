@@ -47,8 +47,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1313225564356082836}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &2088478202899869093
 GameObject:
@@ -408,6 +408,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721910963644576425, guid: 64c8087033e5ddc448564d96ab26b312,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734093208993255530, guid: 64c8087033e5ddc448564d96ab26b312,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6963607652470336776, guid: 64c8087033e5ddc448564d96ab26b312,
         type: 3}
