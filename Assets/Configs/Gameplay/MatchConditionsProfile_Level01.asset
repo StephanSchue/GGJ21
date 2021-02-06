@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b905bf7a0306f4985c85e912adb135, type: 3}
   m_Name: MatchConditionsProfile_Level01
   m_EditorClassIdentifier: 
+  helpDuration: 60
   winCondtion:
     condition: 0
-    puzzleCount: 6
+    puzzleCount: 3
     wordCount: 3

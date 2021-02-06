@@ -14,6 +14,7 @@ namespace GGJ21.Gameplay.Objects
         private UnityAction interactionCompleteCallback;
         private UnityAction finishCompleteCallback;
 
+        public bool IsInteracting { get; private set; }
 
         private void Start()
         {
@@ -24,6 +25,7 @@ namespace GGJ21.Gameplay.Objects
         {
             Debug.Log($"Interact with: {objectComponent.name}");
 
+            IsInteracting = true;
             interactionCompleteCallback = callback;
             animator.SetTrigger("Interact");
 
@@ -33,6 +35,8 @@ namespace GGJ21.Gameplay.Objects
 
         private void OnInteractComplete()
         {
+            IsInteracting = false;
+
             if(interactionCompleteCallback != null)
                 interactionCompleteCallback.Invoke();
         }

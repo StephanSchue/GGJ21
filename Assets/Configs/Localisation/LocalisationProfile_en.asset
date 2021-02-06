@@ -17,11 +17,11 @@ MonoBehaviour:
   - variable: START
     value: Start
   - variable: EXIT
-    value: Beenden
+    value: Exit
   - variable: COPYRIGHT
-    value: "\xA9 Programmierung von Stephan Sch\xFCritz | Grafiken von Nicole Tietze"
+    value: "\xA9 Programmierung by Stephan Sch\xFCritz | Graphics by Nicole Tietze"
   - variable: TITLE
-    value: Papierschnippsel Jagd
+    value: Paper Chase Park
   - variable: TUTORIAL_HEADLINE
     value: Instructions
   - variable: TUTORIAL_CONTENT

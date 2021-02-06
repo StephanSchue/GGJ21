@@ -29,6 +29,7 @@ namespace GGJ21.Game
     [CreateAssetMenu(fileName = "MatchConditionsProfile_", menuName = "Configs/MatchConditionsProfile", order = 1)]
     public class MatchConditionsProfile : ScriptableObject
     {
+        public float helpDuration = 5f;
         public MatchWinCondition winCondtion;
 
         public bool ValidateWinCondition(int score, int remainingMoves)

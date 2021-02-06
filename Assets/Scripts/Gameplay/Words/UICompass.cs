@@ -55,7 +55,7 @@ public class UICompass : MonoBehaviour
             Vector3 heading = gameManager.TargetPosition - gameManager.PlayerPosition;
             float magnitude = heading.magnitude;
 
-            if(magnitude > minDistance && magnitude < maxDistance)
+            if(gameManager.HelpAvailable && magnitude > minDistance && magnitude < maxDistance)
             {
                 float angle = Vector3.SignedAngle(Vector3.up, heading, Vector3.forward);
                 needle.eulerAngles = new Vector3(0f, 0f, angle);

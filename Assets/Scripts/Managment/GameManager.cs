@@ -100,6 +100,12 @@ namespace GGJ21.Game.Core
         private LayerMask groundMask;
         private LayerMask objectMask;
 
+        public bool helpAvailable = false;
+
+        private float helpDurtaiton = 5f;
+        private float helpTimer = 5f;
+        private bool helpTimerActive = false;
+
         // --- Properties ---
         public int RemainingMoves
         {
@@ -124,6 +130,8 @@ namespace GGJ21.Game.Core
         }
 
         public bool OnMap => applicationState == ApplicationState.Game && gamePhase == GamePhase.Map;
+
+        public bool HelpAvailable => helpAvailable;
 
         public Vector3 PlayerPosition { get; private set; }
 
@@ -486,6 +494,8 @@ namespace GGJ21.Game.Core
 
                 treasureCheast = sceneSettings.treasureCheast;
 
+                helpDurtaiton = sceneSettings.matchConditions.helpDuration;
+
                 StartGame();
             }
         }
@@ -575,7 +585,17 @@ namespace GGJ21.Game.Core
 
             // Update Player Position
             if(gamePhase == GamePhase.Map)
+            {
                 PlayerPosition = characterMovement.transform.position;
+
+                if(helpTimerActive && helpTimer > 0f)
+                {
+                    helpTimer -= dt;
+
+                    if(helpTimer < 0f)
+                        helpAvailable = true;
+                }
+            }
         }
 
         private void EndGame()
@@ -617,6 +637,9 @@ namespace GGJ21.Game.Core
             uiWordManager.ClearWordList();
 
             CallWordPuzzle();
+
+            helpAvailable = false;
+            helpTimerActive = false;
         }
 
         private void OnPuzzleSolved()
@@ -632,6 +655,9 @@ namespace GGJ21.Game.Core
             if(debug)
                 objectTileComponent.MarkGoalObject(true);
             #endif
+
+            helpTimer = helpDurtaiton;
+            helpTimerActive = true;
 
             // --- Show Treasure Cheast ---
             if(Score == winCondition.puzzleCount)
@@ -804,6 +830,9 @@ namespace GGJ21.Game.Core
 
         private void InteractWithObject()
         {
+            if(characterInteractor.IsInteracting)
+                return;
+
             inputManager.SetInputActive(false);
             characterInteractor.Interact(markedObject, InteractWithObjectComplete);
         }
