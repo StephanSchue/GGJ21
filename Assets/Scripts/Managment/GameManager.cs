@@ -811,10 +811,10 @@ namespace GGJ21.Game.Core
 
         private void OnButtonPauseMenuExitClick()
         {
-            if(ingameRepresentation)
+            //if(ingameRepresentation)
                 QuitGame();
-            else
-                ChangeApplicationState(ApplicationState.MainMenu);
+            //else
+            //    ChangeApplicationState(ApplicationState.MainMenu);
         }
 
         private void OnFoundPuzzleContinue()
