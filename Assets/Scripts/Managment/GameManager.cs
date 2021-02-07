@@ -701,8 +701,6 @@ namespace GGJ21.Game.Core
             objectGenerator.ObjectTiles[coordinates.x, coordinates.y].MarkGoalObject(false);
             #endif
 
-            uiManager.ActivateButton("Map", false);
-            
             if(!firstPuzzle)
                 wordManager.NextWordPuzzle();
 
@@ -711,6 +709,7 @@ namespace GGJ21.Game.Core
 
             inputManager.SetInputActive(false);
             uiManager.ChangeUIPanel("WordPuzzle");
+            uiManager.ActivateButton("Map", false);
             OutputScore();
 
             helpAvailable = false;
