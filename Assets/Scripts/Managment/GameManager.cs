@@ -785,7 +785,7 @@ namespace GGJ21.Game.Core
 
         private void OnButtonWordsClick()
         {
-            if(gamePhase == GamePhase.Words)
+            if(gamePhase == GamePhase.Words || gamePhase == GamePhase.WordsNew)
                 return;
 
             ChangeGamePhase(GamePhase.Words);
@@ -840,7 +840,7 @@ namespace GGJ21.Game.Core
         private void CallUnpause()
         {
             inputManager.SetInputActive(true);
-            ShowGame();
+            uiManager.RemoveUIPanel("Pause");
         }
 
         #endregion

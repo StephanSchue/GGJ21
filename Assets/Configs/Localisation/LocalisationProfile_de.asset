@@ -21,14 +21,14 @@ MonoBehaviour:
   - variable: COPYRIGHT
     value: "\xA9 Programmierung von Stephan Sch\xFCritz | Grafiken von Nicole Tietze"
   - variable: TITLE
-    value: Papierschnippsel Jagd
+    value: Papierschnipsel Jagd
   - variable: TUTORIAL_HEADLINE
     value: Anleitung
   - variable: TUTORIAL_CONTENT
     value: "Ein Schatz ist im Park versteckt und du bist auf der Suche nach ihm.\nDu
-      fandest ein paar Papierschnippsel, die so aussehen als ob sie dir beim finden
-      den Schatzes helfen k\xF6nnen.\n\n1. L\xF6se das Papierr\xE4tsel\n2. Begib
-      dich zum beschrieben Feld"
+      fandest ein paar Papierschnipsel, die so aussehen als ob sie dir beim Finden
+      des Schatzes helfen k\xF6nnen.\n\n1. L\xF6se das Papierr\xE4tsel\n2. Begib
+      dich zum beschrieben Ort"
   - variable: RESUME
     value: Fortsetzen
   - variable: RESTART
@@ -42,4 +42,4 @@ MonoBehaviour:
   - variable: SOLVED_PUZZLE
     value: "Du hast das R\xE4tsel gel\xF6st.\nSuche nach dem beschrieben Ort."
   - variable: SETUP_DESCRIPTION
-    value: "Wieviele Puzzle m\xF6chtest du l\xF6sen?"
+    value: "Wie viele Puzzle m\xF6chtest du l\xF6sen?"

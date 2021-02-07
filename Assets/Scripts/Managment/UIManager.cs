@@ -328,6 +328,13 @@ namespace GGJ21.General
             ShowUIPanel(newState, PANEL_FADEIN_DURATION, delayIn);
         }
 
+        public void RemoveUIPanel(string newState, float delayOut = 0f)
+        {
+            // --- Exit Old State ---
+            string oldState = newState;
+            HideUIPanel(newState, PANEL_FADEOUT_DURATION, delayOut);
+        }
+
         #endregion
 
         #region Text Output

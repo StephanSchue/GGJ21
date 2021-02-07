@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+#if UNITY_EDITOR
 using UnityEditor.Events;
+#endif
 
 namespace GGJ21.Localisation
 {
