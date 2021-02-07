@@ -1122,6 +1122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6003690113834766249, guid: 44ba9cc5da277014db3cb64085437b52,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003690113834766249, guid: 44ba9cc5da277014db3cb64085437b52,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1275,7 +1280,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8544168891440662826, guid: 44ba9cc5da277014db3cb64085437b52,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4fd5c8ab6cf1d44bb679ace8f1e1836,
+        type: 3}
+    m_RemovedComponents:
+    - {fileID: 7964226723122459339, guid: 44ba9cc5da277014db3cb64085437b52, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 44ba9cc5da277014db3cb64085437b52, type: 3}
 --- !u!225 &4916385022624489619 stripped
 CanvasGroup:
@@ -1910,6 +1922,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1454468326772543419, guid: 839718ea231a5254fae65f3ae31fbb52,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9680c66fb30e15745945a0a8dd914567,
+        type: 3}
     - target: {fileID: 1684594999649743233, guid: 839718ea231a5254fae65f3ae31fbb52,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2065,7 +2083,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 881348080798348378, guid: 839718ea231a5254fae65f3ae31fbb52, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 839718ea231a5254fae65f3ae31fbb52, type: 3}
 --- !u!225 &6256479953950648316 stripped
 CanvasGroup:

@@ -112,6 +112,9 @@ namespace GGJ21.Game.Core
 
         private bool firstPuzzle = false;
 
+        public bool HelpWindowAvailable => gamePhase == GamePhase.Map || 
+            gamePhase == GamePhase.Words || gamePhase == GamePhase.WordsNew;
+
         // --- Properties ---
         public int RemainingMoves
         {
@@ -633,7 +636,7 @@ namespace GGJ21.Game.Core
         private void ProcessGame(float dt)
         {
             // --- Navigation Input ---
-            if(Input.GetKeyDown(KeyCode.F1))
+            if(Input.GetKeyDown(KeyCode.F1) && HelpWindowAvailable)
             {
                 OnButtonHelpClick();
             }
