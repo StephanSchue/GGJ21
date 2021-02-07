@@ -355,9 +355,9 @@ namespace GGJ21.Game.Core
             inputManager.SetInputActive(false);
 
             if(matchResult == MatchResult.Win)
-                uiManager.ChangeUIPanel("GameOver_Win", 0f, 0.5f);
+                uiManager.ChangeUIPanel("GameOver_Win", 0.5f, 1f);
             else
-                uiManager.ChangeUIPanel("GameOver_Loose", 0f, 0.5f);
+                uiManager.ChangeUIPanel("GameOver_Loose", 0.5f, 1f);
 
             OutputScore();
             OutputMoves();
